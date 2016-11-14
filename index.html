@@ -6,12 +6,12 @@
       <link rel="stylesheet" type="text/css" href="assets/css/style.css">
       <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js">
-</script>
+      <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2XDbtFEVtKgJZ2L6EiD-IRQM_PtQa7xQ&libraries=places&callback=initAutocomplete"
+         async defer></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
 
-<script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
-<link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
+
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     </head>
@@ -31,8 +31,9 @@
 
 <main class="map-space">
 
-
   </main>
+  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+  <div id="map"></div>
 
 <footer class="page-footer grey darken-4">
           <div class="container">
@@ -71,6 +72,8 @@
 
 
 <script src="assets/javascript/app.js"></script>
+<script src="assets/javascript/googleapi.js"></script>
+
 
 </body>
 

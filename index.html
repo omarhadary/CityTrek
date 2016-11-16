@@ -7,9 +7,6 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-      
-<script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
-<link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     </head>
@@ -22,9 +19,14 @@
       <div id="sign-up">Sign Up</div>
       <div id="faq">FAQ</div>
       <div id="nav-toggle">&#9776;</div>
+
 </div>
 
-<div class="header"></div>
+<div class="header">
+  <span class="experience">Experience.</span> Search a city and experience it like a trekker.
+
+  <input id="search-bar" type="text" placeholder="Search a city">
+</div>
 
 <main class="map-space">
  
@@ -49,19 +51,67 @@
           </div>
           <div class="footer-copyright">
             <div class="container">
-            © 2014 Copyright Text
+            © 2016 CityTrek
             <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
             </div>
           </div>
         </footer>
 
 
- <div id="myModal" class="modal">
+ <div id="loginModal" class="modal">
   <div class="modal-content">
     <span class="close">×</span>
-    <input id="username" type="text" placeholder="Username">
-    <input id="password" type="text" placeholder="Password">
-    <button id="submit">Log In</button>
+    <img class="modal-logo" src="assets/images/logo.png">
+      <input id="username" type="text" placeholder="Username">
+       <div class="input-name">
+    </div>
+    <div class="input-password">
+      <input id="password" type="text" placeholder="Password">
+    </div>
+    <button id="logInButton">Log In</button>
+    <p>Don't have an account? Sign up here!</p>
+  </div>
+
+</div>
+
+ <div id="signupModal" class="modal">
+  <div class="modal-content">
+    <span class="close">×</span>
+    <img class="modal-logo" src="assets/images/logo.png">
+    <input id="username1" type="text" placeholder="Username">
+    <input id="password1" type="text" placeholder="Password">
+    <input id="e-mail1" type="text" placeholder="E-Mail">
+    <button id="signUpButton">Sign Up</button>
+    <p>Already have an account? Log-in here!</p>
+  </div>
+
+</div>
+
+ <div id="faqModal" class="sideModal">
+  <div class="faq-content">
+    <span class="close">×</span>
+      <ul>
+        <li>asdfsadf</li>
+          <p>asdsaf</p>
+        <li>asdfsadf</li>
+          <p>asdsaf</p>
+        <li>asdfsadf</li>
+          <p>asdsaf</p>
+        <li>asdfsadf</li>
+          <p>asdsaf</p>
+        <li>asdfsadf</li>
+          <p>asdsaf</p>
+      </ul>
+  </div>
+
+</div>
+
+ <div id="navModal" class="topModal">
+  <div class="nav-content">
+    <img class="nav-logo" src="assets/images/logo.png">
+    <div id="toggle">Log in</div>
+    <div id="toggle">Sign Up</div>
+    <div id="toggle">FAQ</div>
   </div>
 
 </div>

@@ -1,31 +1,103 @@
-$(document).ready(function() {
+var faqModal = document.getElementById('faqModal');
 
+var faqSpan = document.getElementsByClassName("close")[2];
+
+$("#faq").on("click", function(){
+	$("#faqModal").css("display", "block");
+	$("#signupModal").css("display", "none");
+	$("#loginModal").css("display", "none");
+	$(".navigation-bar").fadeOut(0200);
+	$("html").css("width", "70%")
+})
+
+faqSpan.onclick = function() {
+    $("#faqModal").css("display", "none")
+   	$(".navigation-bar").fadeIn();
+   	$("html").css("width", "100%")
+}
+
+$(window).on("click", function(event) {
+    if (event.target == faqModal) {
+        faqModal.style.display = "none";
+        $(".navigation-bar").fadeIn();
+        $("html").css("width", "100%");
+    }
 });
 
-// Get the modal
-var modal = document.getElementById('myModal');
+var signModal = document.getElementById('signupModal');
 
-// Get the button that opens the modal
-var btn = document.getElementById("log-in");
+var signSpan = document.getElementsByClassName("close")[1];
 
-// Get the <span> element that closes the modal
+$("#sign-up").on("click", function(){
+    $("#signupModal").css("display", "block");
+    $("#loginModal").css("display", "none");
+    $("#faqModal").css("display", "none");
+    $("html").css("width", "100%")
+    $(".navigation-bar").fadeOut(0200);
+});
+
+signSpan.onclick = function() {
+    $("#signupModal").css("display", "none");
+    $(".navigation-bar").fadeIn();
+}
+
+$(window).on("click", function(event) {
+    if (event.target == signModal) {
+        signModal.style.display = "none";
+        $(".navigation-bar").fadeIn();
+    }
+});
+
+var modal = document.getElementById('loginModal');
+
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal
-btn.onclick = function() {
-    modal.style.display = "block";
-}
+$("#log-in").on("click", function(){
+	$("#loginModal").css("display", "block");
+	$("#signupModal").css("display", "none");
+    $("#faqModal").css("display", "none");
+    $("html").css("width", "100%")
+	$(".navigation-bar").fadeOut(0200);
+})
 
-// When the user clicks on <span> (x), close the modal
 span.onclick = function() {
-    modal.style.display = "none";
+	$("#loginModal").css("display", "none");
+    $(".input-name").empty();
+   	$(".navigation-bar").fadeIn();
 }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+$(window).on("click", function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
+        $(".navigation-bar").fadeIn();
     }
-}
+});
+
+var navModal = document.getElementById('navModal');
+
+var span = document.getElementsByClassName("close")[3];
+
+$("#nav-toggle").on("click", function(){
+	$("#navModal").css("display", "block");
+	$(".header").css("margin-top", "270px");
+	$(".navigation-bar").fadeOut(0200);
+})
+
+$(window).on("click", function(event) {
+    if (event.target == navModal) {
+        navModal.style.display = "none";
+        $(".navigation-bar").fadeIn();
+       	$(".header").css("margin-top", "70px");
+    }
+});
+
+var usernameInput = $("#username").val().trim();
+var passwordInput = $("#password").val().trim();
+
+//$("#logInButton").on("click", function(){
+//if (usernameInput === "") {
+
+//} 
 
 
+//});

@@ -3,6 +3,7 @@
   <meta charset="UTF-8">
     <head>
       <title>CityTrek</title>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="assets/css/style.css">
       <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -14,25 +15,26 @@
 <body>
 
 <div class="navigation-bar white">
-  <img class="logo" src="assets/images/logo.png">
+      <a href="index.html"><img class="logo" src="assets/images/logo.png"></a>
       <div id="log-in">Log In</div>
       <div id="sign-up">Sign Up</div>
       <div id="faq">FAQ</div>
       <div id="nav-toggle">&#9776;</div>
 
 </div>
+<header></header>
 
+<div class="background">
 <div class="header">
   <span class="experience">Experience.</span> Search a city and experience it like a trekker.
-
-  <input id="search-bar" type="text" placeholder="Search a city">
+  <input id="search-bar" type="text" placeholder="Search for a destination">
 </div>
 
-<main class="map-space">
- 
+<main class="placeholder">
 
-  </main>
 
+</main>
+</div>
 <footer class="page-footer grey darken-4">
           <div class="container">
             <div class="row">
@@ -52,7 +54,6 @@
           <div class="footer-copyright">
             <div class="container">
             © 2016 CityTrek
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
             </div>
           </div>
         </footer>
@@ -61,34 +62,31 @@
  <div id="loginModal" class="modal">
   <div class="modal-content">
     <span class="close">×</span>
-    <img class="modal-logo" src="assets/images/logo.png">
-      <input id="username" type="text" placeholder="Username">
-       <div class="input-name">
-    </div>
-    <div class="input-password">
-      <input id="password" type="text" placeholder="Password">
-    </div>
-    <button id="logInButton">Log In</button>
-    <p>Don't have an account? Sign up here!</p>
+        <img class="modal-logo" src="assets/images/logo.png">
+        <input id="username" type="text" placeholder="Username">
+        <input id="password" type="text" placeholder="Password">
+        <button id="logInButton">Log In</button>
+        <p>Don't have an account? Sign up <a href="signup.html" style="text-decoration: underline">here</a>!</p>
   </div>
 
 </div>
 
  <div id="signupModal" class="modal">
-  <div class="modal-content">
+  <div class="signup-content">
     <span class="close">×</span>
     <img class="modal-logo" src="assets/images/logo.png">
     <input id="username1" type="text" placeholder="Username">
     <input id="password1" type="text" placeholder="Password">
     <input id="e-mail1" type="text" placeholder="E-Mail">
     <button id="signUpButton">Sign Up</button>
-    <p>Already have an account? Log-in here!</p>
+    <p>Already have an account? Log-in <a href="login.html" style="text-decoration: underline">here</a>!</p>
   </div>
 
 </div>
 
  <div id="faqModal" class="sideModal">
   <div class="faq-content">
+    <img class="faq-logo" src="assets/images/logo.png">
     <span class="close">×</span>
       <ul>
         <li>asdfsadf</li>
@@ -109,9 +107,11 @@
  <div id="navModal" class="topModal">
   <div class="nav-content">
     <img class="nav-logo" src="assets/images/logo.png">
-    <div id="toggle">Log in</div>
-    <div id="toggle">Sign Up</div>
+    <a href="login.html"><div id="toggle">Log in</div></a>
+    <a href="signup.html"><div id="toggle">Sign Up</div></a>
     <div id="toggle">FAQ</div>
+    <div id="close">Close</div>
+
   </div>
 
 </div>

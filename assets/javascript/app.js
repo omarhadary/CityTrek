@@ -80,6 +80,7 @@ var span = document.getElementsByClassName("close")[3];
 $("#nav-toggle").on("click", function(){
 	$("#navModal").css("display", "block");
 	$(".header").css("margin-top", "270px");
+	$(".container-space").css("margin-top", "270px");
 	$(".navigation-bar").fadeOut(0200);
 })
 
@@ -88,7 +89,16 @@ $(window).on("click", function(event) {
         navModal.style.display = "none";
         $(".navigation-bar").fadeIn();
        	$(".header").css("margin-top", "70px");
+       	$(".container-space").css("margin-top", "40px");
     }
+});
+
+
+$("#close").on("click", function() {
+	$("#navModal").css("display", "none");
+   	$(".navigation-bar").fadeIn();
+   	$(".header").css("margin-top", "70px");
+   	$(".container-space").css("margin-top", "40px");
 });
 
 var usernameInput = $("#username").val().trim();

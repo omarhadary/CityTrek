@@ -207,6 +207,7 @@ html, body {
     position: fixed; 
     z-index: 10;
     right: 0;
+    top: 0 !important;
     width: 100% !important;
     height: 100% !important;
     min-height: 100% !important;
@@ -309,6 +310,10 @@ a {
 	margin: 2px;
 }
 
+.toggle {
+	display:none;
+}
+
 @media screen and (max-width: 640px) and (min-width: 0px) {
 #log-in, #sign-up, #faq, #results-page {
 	display: none;
@@ -320,7 +325,7 @@ a {
 /* Modal Content */
 
 .modal-content {
-	background-color: #fefefe;
+	background-color: #fff;
 	margin: 100px auto;
 	padding: 20px;
 	width: 25%;

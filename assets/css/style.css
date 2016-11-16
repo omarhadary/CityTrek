@@ -307,18 +307,9 @@ a {
 	margin: 2px;
 }
 
-@media screen and (max-width: 640px) and (min-width: 20px) {
+@media screen and (max-width: 640px) and (min-width: 0px) {
 #log-in, #sign-up, #faq, #results-page {
 	display: none;
-	position: fixed;
-	z-index: 1;
-	left: 0;
-	width: 100% !important;
-	height: 100% !important;
-	min-height: 100% !important;
-	overflow: visible !important;
-	background-color: rgb(0, 0, 0)!important;
-	background-color: rgba(0, 0, 0, 0.4)!important;
 }
 
 #nav-toggle {
@@ -342,22 +333,6 @@ input {
 	min-width: 360px;
 }
 
-/* The Close Button */
-
-.close {
-	color: #aaaaaa;
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
-}
-
-.close:hover, .close:focus, {
-	color: #000;
-	text-decoration: none;
-	cursor: pointer;
-}
-
-
 .navigation-bar {
 	min-width: 320px;
 }
@@ -376,6 +351,9 @@ input {
 	width:100%;
 }
 
+.login-background, .signup-background {
+	width: 100%;
+}
 
 }
 

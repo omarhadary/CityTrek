@@ -297,4 +297,4 @@ setInterval(function() {
     .fadeIn(0800)
     .end()
     .appendTo('#slideshow');
-},  3000);
+},  2500);

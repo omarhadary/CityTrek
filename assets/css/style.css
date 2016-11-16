@@ -192,7 +192,7 @@ html, body {
 }
 
 .sideModal {
-	display: none; 
+    display: none; 
     position: fixed; 
     z-index: 10;
     right: 0;
@@ -203,7 +203,7 @@ html, body {
 }
 
 .topModal {
-	display: none; 
+    display: none; 
     position: fixed; 
     z-index: 10;
     right: 0;
@@ -320,7 +320,7 @@ a {
 /* Modal Content */
 
 .modal-content {
-	background-color: #fefefe;
+	background-color: #fff;
 	margin: 100px auto;
 	padding: 20px;
 	width: 25%;

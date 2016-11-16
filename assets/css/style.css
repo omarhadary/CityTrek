@@ -20,8 +20,8 @@ html, body {
 .background {
 	width: 80%;
 	height: 100% !important;
-	min-height: 968px !important;
-	margin: 0 auto;
+	min-height: 1000px !important;
+	margin: 0 auto 0px;
 	background-color: white;
 }
 
@@ -43,7 +43,7 @@ html, body {
 	text-align: center;
 }
 
-.page-footer {
+footer, .page-footer {
 	margin-top: 0 !important;
 }
 
@@ -60,7 +60,6 @@ html, body {
 	height: 70px;
 	font-size: 20px !important;
 }
-
 .navigation-bar {
 	margin: 0 auto;
 	width: 100%;
@@ -70,7 +69,6 @@ html, body {
 	position: fixed;
 	z-index: 100000;
 }
-
 .logo {
 	width: 144px;
 	height: 30px;
@@ -99,26 +97,17 @@ html, body {
 
 
 .placeholder {
-	margin: -40px auto 40px !important;
-	border: 1px solid black;
+	margin: -40px auto 0px !important;
+	margin: 0 auto;
 	width: 75%;
-	height: 500px;
 }
 
-.container-space {
-	margin: 40px auto;
-	padding: 50px;
-}
 
-.white-text {
-	font-size: 14px;
-}
-
-#log-in, #sign-up, #faq, #nav-toggle, #home {
+#log-in, #sign-up, #search-button, #results-page, #faq, #nav-toggle, #results-page {
 	float: right;
 	line-height: 20px;
 	height: 50px;
-	width: 100px;
+	width: 120px;
 	padding: 15px;
 	border-left: 1px solid #ccc;
 	text-align: center;
@@ -133,7 +122,11 @@ html, body {
 	display: none;
 }
 
-#logInButton, #signUpButton {
+#nav-toggle {
+	display: none;
+}
+
+#logInButton, #signUpButton, #submit, #add-user-input {
 	width: 95%;
 	text-align: center;
 	background-color: orange;
@@ -143,15 +136,7 @@ html, body {
 	height: 40px;
 }
 
-#message {
-	color: red;
-	text-align: left;
-	margin-top: -18px;
-	margin-left: 14px;
-	font-family: Times, serif;
-}
-
-#log-in:hover, #sign-up:hover, #faq:hover, #nav-toggle:hover {
+#log-in:hover, #sign-up:hover, #faq:hover, #nav-toggle:hover, #results-page:hover {
 	background-color: #ddd;
 	cursor: pointer;
 }
@@ -287,14 +272,55 @@ a {
     cursor: pointer;
 }
 
+
 @media screen and (max-width: 640px) and (min-width: 320px) {
 #log-in, #sign-up, #faq {
 	display: none;
+	position: fixed;
+	/* Stay in place */
+	z-index: 1;
+	/* Sit on top */
+	left: 0;
+	width: 100% !important;
+	height: 100% !important;
+	min-height: 100% !important;
+	overflow: visible !important;
+	background-color: rgb(0, 0, 0)!important;
+	/* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4)!important;
+}
+input {
+	border: 1px solid black !important;
+	padding: 5px !important;
 }
 
-#nav-toggle {
-	display: inline;
+/* Modal Content */
+
+.modal-content {
+	background-color: #fefefe;
+	margin: 100px auto;
+	padding: 20px;
+	width: 25%;
+	height: 70%;
+	text-align: center;
+	min-width: 360px;
 }
+
+/* The Close Button */
+
+.close, .search-close {
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover, .search-close:hover, .close:focus, .search-close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
 
 .navigation-bar {
 	min-width: 320px;
@@ -313,7 +339,6 @@ a {
 	width:100%;
 }
 
-}
 
 @media screen and (max-width: 960px) and (min-width: 641px) {
 
@@ -326,3 +351,15 @@ a {
 
 }
 }
+
+@media screen and (min-width: 320px) and (max-width: 640px) {
+	#log-in, #sign-up, #search-button, #results-page, #faq {
+		display: none;
+	}
+	#nav-toggle {
+		display: inline;
+	}
+	.navigation-bar {
+		min-width: 320px;
+	}
+

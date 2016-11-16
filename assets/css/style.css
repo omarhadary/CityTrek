@@ -343,6 +343,7 @@ input {
 	font-size: 35px;
 	padding-right: 0px;
 	text-align: center;
+	min-height: 300px !important;
 	margin-bottom: 50px !important;
 }
 

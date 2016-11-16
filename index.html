@@ -1,84 +1,54 @@
+
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>CityTrek</title>
-    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js">
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
-    </script>
-    <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js">
-    </script>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Roads API Demo</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" rel="stylesheet">
-    <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'>
-    </script>
-    <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet'>
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?libraries=drawing,places"</script> -->
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2XDbtFEVtKgJZ2L6EiD-IRQM_PtQa7xQ&libraries=places&callback=initAutocomplete"
-       async defer></script> -->
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-</head>
 
-<body>
-<div class="navigation-bar white">
-    <img class="logo" src="assets/images/logo.png">
-    <div id="log-in">
-        Log In
-    </div>
-    <div id="sign-up">
-        Sign Up
-    </div>
-    <div id="search-button">
-        Search
-    </div>
-    <div id="faq">
-        FAQ
-    </div>
-    <div id="nav-toggle">
-        &#9776;
-    </div>
-</div>
-<div class="header">
-    <div class="row">
-        <div class="row buttons"></div>
-    </div>
-</div>
-<main class="map-space">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=drawing,places"></script>
+    <script src="assets/javascript/googleapi.js"></script>
 
-  </main>
+  </head>
+  <div class="navigation-bar white">
+      <img class="logo" src="assets/images/logo.png">
+      <div id="log-in">
+          Log In
+      </div>
+      <div id="sign-up">
+          Sign Up
+      </div>
+      <div id="search-button">
+          Search
+      </div>
+      <div id="faq">
+          FAQ
+      </div>
+      <div id="nav-toggle">
+          &#9776;
+      </div>
+  </div>
+  <div class="header">
+      <div class="row">
+          <div class="row buttons"></div>
+      </div>
+  </div>
+<!--   <main class="map-space">
 
-  <div id="map"></div>
+    </main> -->
+
+  <body>
+    <div id="map"></div>
     <div id="bar">
       <p class="auto"><input type="text" id="autoc"/></p>
       <p><a id="clear" href="#">Click here</a> to clear map.</p>
     </div>
-  <!-- <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-  <div id="map"></div> -->
 
-
-    <div class="row">
-        <div class="col-sm-8 cities"></div>
-    </div>
-    <div class="row">
-        <div class="col-sm-8 new-cities"></div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading" id="table-heading">
-            Search History
-        </div>
-        <table class="table added-destination">
-            <tr>
-                <th>Destination</th>
-                <th>City</th>
-                <th>State</th>
-            </tr>
-        </table>
-    </div>
-</main>
-
-<footer class="page-footer grey darken-4">
+    
+    <footer class="page-footer grey darken-4">
     <div class="container">
         <div class="row">
             <div class="col l6 s12 grey darken-4">
@@ -114,12 +84,6 @@
         <span class="search-close">×</span> <input id="city-input" placeholder="City" type="text"> <input id="state-input" placeholder="State" type="text"> <button id="add-user-input">Search</button>
     </div>
 </div>
-
-
-
 <script src="assets/javascript/app.js"></script>
-<script src="assets/javascript/googleapi.js"></script>
-
-
-</body>
+  </body>
 </html>

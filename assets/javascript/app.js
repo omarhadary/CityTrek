@@ -40,6 +40,7 @@ $(document).ready(function() {
             buttons.attr("src", locations[i].image)
             buttons.attr("data-city", locations[i].city);
             buttons.attr("data-state", locations[i].state);
+
             buttons.addClass("city-button");
             buttons.html(locations[i].city + ", " + locations[i].state);
             $(".buttons").append(buttons);
@@ -47,6 +48,9 @@ $(document).ready(function() {
     }
     // get Weather API results for pre-selected locations and append to page
     function displayWeather() {
+
+
+
         var weatherDiv = $("<div>");
         var cityName = $(this).data("city");
         var stateName = $(this).data("state");
@@ -72,6 +76,7 @@ $(document).ready(function() {
                     weatherDiv.append("...Humidity: " + humidity + "...");
                     weatherDiv.append("...Wind Speed: " + windSpeed + " mph...");
                     weatherDiv.append("...Wind Direction: " + windDirection + "...");
+                    // weatherDiv.append("...Forecast: " + forecast + "...");
                     weatherDiv.append(weatherIcon);
                     weatherDiv.append("..." + temp);
                     $(".cities").prepend(weatherDiv);
@@ -138,9 +143,15 @@ $(document).ready(function() {
     });
     // create on click event handler to display the weather if any of the topic buttons are clicked
     $(document).on('click', ".city-button", displayWeather);
+    // function to navigate to destinations page
+    // function destinationsPage() {
+        // $(".buttons").attr('href','destinations.html');
+        // buttons.attr("href", "destinations.html");
+        // window.location.assign("destinations.html");
+    // }
     // run function to show the topics buttons
     showCity();
-});
+
 // Get the login modal
 var modal = document.getElementById('myModal');
 var btn = document.getElementById("log-in");
@@ -171,3 +182,16 @@ window.onclick = function(event) {
         searchModal.style.display = "none";
     }
 }
+});
+
+// on the click function, pass to local storage the class of the button you're clicking on
+// if location.href=is the destination page,
+// make an array of the localtion and parseit for the .html page
+// then getlocalstoarge, run ajax call with those values and display at that page
+// var uriList = window.location.href.split('/');
+// var uri = uriList[uriList.length - 1];
+
+// IF PLANTS OPEN MODAL
+// if (uri === 'destinations') {
+    //stuff
+// }

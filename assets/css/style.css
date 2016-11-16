@@ -43,7 +43,7 @@ main {
 .white-text {
 	font-size: 14px;
 }
-#log-in, #sign-up, #search-button, #faq, #nav-toggle {
+#log-in, #sign-up, #search-button, #results-page, #faq, #nav-toggle {
 	float: right;
 	line-height: 20px;
 	height: 50px;
@@ -70,7 +70,7 @@ main {
 	color: white;
 	height: 40px;
 }
-#log-in:hover, #sign-up:hover, #search-button:hover, #faq:hover, #nav-toggle:hover {
+#log-in:hover, #sign-up:hover, #search-button:hover, #results-page:hover, #faq:hover, #nav-toggle:hover {
 	background-color: #ddd;
 }
 .modal {
@@ -120,7 +120,7 @@ input {
 	cursor: pointer;
 }
 @media screen and (min-width: 320px) and (max-width: 640px) {
-	#log-in, #sign-up, #search-button, #faq {
+	#log-in, #sign-up, #search-button, #results-page, #faq {
 		display: none;
 	}
 	#nav-toggle {

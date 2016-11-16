@@ -288,3 +288,13 @@ $("#close").on("click", function() {
     $(".container-space").css("margin-top", "40px");
 });
 
+$("#slideshow > div:gt(0)").hide();
+
+setInterval(function() { 
+  $('#slideshow > div:first')
+    .fadeOut(0800)
+    .next()
+    .fadeIn(0800)
+    .end()
+    .appendTo('#slideshow');
+},  3000);

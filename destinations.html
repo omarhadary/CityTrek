@@ -1,56 +1,4 @@
-
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html>
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>Roads API Demo</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" rel="stylesheet">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=drawing,places"></script>
-    <script src="assets/javascript/googleapi.js"></script>
-
-  </head>
-  <div class="navigation-bar white">
-      <img class="logo" src="assets/images/logo.png">
-      <div id="log-in">
-          Log In
-      </div>
-      <div id="sign-up">
-          Sign Up
-      </div>
-      <div id="search-button">
-          Search
-      </div>
-      <div id="faq">
-          FAQ
-      </div>
-      <div id="nav-toggle">
-          &#9776;
-      </div>
-  </div>
-  <div class="header">
-      <div class="row">
-          <div class="row buttons"></div>
-      </div>
-  </div>
-<!--   <main class="map-space">
-
-    </main> -->
-
-  <body>
-    <div id="map"></div>
-    <div id="bar">
-      <p class="auto"><input type="text" id="autoc"/></p>
-      <p><a id="clear" href="#">Click here</a> to clear map.</p>
-    </div>
-
-    
-    <footer class="page-footer grey darken-4">
-=======
 <html lang="en">
     <meta charset="UTF-8">
     <head>
@@ -63,15 +11,16 @@
     <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js">
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" rel="stylesheet">
-    <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'>
-    </script>
-    <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet'>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=drawing,places"></script>
+    <script src="assets/javascript/googleapi.js"></script>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 </head>
 
 <body>
 <div class="navigation-bar white">
-      <a href="index.html"><img class="logo" src="assets/images/logo.png"></a>
+      <a href="index.html"><img class="logo" src="assets/images/logo.png"></file:///C:/Users/Justin/Project-1/assets/images/logo.pnga>
       <div id="log-in">Log In</div>
       <div id="sign-up">Sign Up</div>
       <a href="destinations.html">
@@ -81,48 +30,50 @@
       </a>
       <div id="faq">FAQ</div>
       <div id="nav-toggle">&#9776;</div>
-
 </div>
 
 <header></header>
 
 <div class="background">
-<div class="header">
-  <span class="experience">Experience.</span> Search a city and experience it like a trekker.
-  <input id="search-bar" type="text" placeholder="Search for a city, state">
-</div>
-
 <main class="placeholder">
-<div class="text">Explore your <span class="experience">destination</div>.</span>
-<div id="slideshow">
-   <div>
-     <img src="assets/images/losangeles.jpg" id="slideImages">
-   </div>
-      <div>
-     <img src="assets/images/chicago.jpg" id="slideImages">
-   </div>
-   <div>
-     <img src="assets/images/dallas.jpg" id="slideImages">
-   </div>
-      <div>
-     <img src="assets/images/sanfrancisco.jpg" id="slideImages">
-   </div>
-   <div>
-     <img src="assets/images/newyork.jpg" id="slideImages">
-   </div>
-      <div>
-     <img src="assets/images/denver.jpg" id="slideImages">
-   </div>
-      <div>
-     <img src="assets/images/stlouis.jpg" id="slideImages">
-   </div>
+<div class="destination-space">
 
+  <!-- Map Section -->
+    <div id="map"></div>
+    <div id="bar">
+      <p class="auto"><input type="text" id="autoc"/></p>
+      <p><a id="clear" href="#">Click here</a> to clear map.</p>
+    </div>
+
+    <div class="row">
+        <div class="row buttons"></div>
+    </div>
 </div>
-</main>
+    <div class="row">
+        <div class="col-sm-8 cities"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8 new-cities"></div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" id="table-heading">
+            Search History
+        </div>
+        <table class="table added-destination">
+            <tr>
+                <th>Destination</th>
+                <th>City</th>
+                <th>State</th>
+            </tr>
+        </table>
+    </div>
+
+    </main>
 </div>
+
 
 <footer class="page-footer grey darken-4">
->>>>>>> f00fdb1b6f382932167e76120f4699639883760f
     <div class="container">
         <div class="row">
             <div class="col l6 s12 grey darken-4">
@@ -142,6 +93,7 @@
             </div>
           </div>
         </footer>
+
 
 <div id="loginModal" class="modal">
   <div class="modal-content">
@@ -169,8 +121,8 @@
 
  <div id="faqModal" class="sideModal">
   <div class="faq-content">
-    <span class="close">×</span>
     <img class="faq-logo" src="assets/images/logo.png">
+    <span class="close">×</span>
       <ul>
         <li>asdfsadf</li>
           <p>asdsaf</p>
@@ -197,14 +149,9 @@
 
   </div>
 </div>
-<<<<<<< HEAD
-<script src="assets/javascript/app.js"></script>
-  </body>
-</html>
-=======
+
 
 <script src="assets/javascript/app.js">
 </script>
 </body>
 </html>
->>>>>>> f00fdb1b6f382932167e76120f4699639883760f

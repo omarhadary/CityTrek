@@ -1,3 +1,4 @@
+// Omar's backend code //
 $(document).ready(function() {
     // Initialize Firebase
     var config = {
@@ -40,6 +41,7 @@ $(document).ready(function() {
             buttons.attr("src", locations[i].image)
             buttons.attr("data-city", locations[i].city);
             buttons.attr("data-state", locations[i].state);
+
             buttons.addClass("city-button");
             buttons.html(locations[i].city + ", " + locations[i].state);
             $(".buttons").append(buttons);
@@ -47,6 +49,9 @@ $(document).ready(function() {
     }
     // get Weather API results for pre-selected locations and append to page
     function displayWeather() {
+
+
+
         var weatherDiv = $("<div>");
         var cityName = $(this).data("city");
         var stateName = $(this).data("state");
@@ -72,6 +77,7 @@ $(document).ready(function() {
                     weatherDiv.append("...Humidity: " + humidity + "...");
                     weatherDiv.append("...Wind Speed: " + windSpeed + " mph...");
                     weatherDiv.append("...Wind Direction: " + windDirection + "...");
+                    // weatherDiv.append("...Forecast: " + forecast + "...");
                     weatherDiv.append(weatherIcon);
                     weatherDiv.append("..." + temp);
                     $(".cities").prepend(weatherDiv);
@@ -138,24 +144,15 @@ $(document).ready(function() {
     });
     // create on click event handler to display the weather if any of the topic buttons are clicked
     $(document).on('click', ".city-button", displayWeather);
+    // function to navigate to destinations page
+    // function destinationsPage() {
+        // $(".buttons").attr('href','destinations.html');
+        // buttons.attr("href", "destinations.html");
+        // window.location.assign("destinations.html");
+    // }
     // run function to show the topics buttons
     showCity();
 
-// Get the login modal
-var modal = document.getElementById('myModal');
-var btn = document.getElementById("log-in");
-var span = document.getElementsByClassName("close")[0];
-btn.onclick = function() {
-    modal.style.display = "block";
-}
-span.onclick = function() {
-    modal.style.display = "none";
-}
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
 // Get the search modal
 var searchModal = document.getElementById("search-modal");
 var searchButton = document.getElementById("search-button");
@@ -171,188 +168,133 @@ window.onclick = function(event) {
         searchModal.style.display = "none";
     }
 }
-
-
-// *******************************************************************************************
-var apiKey = "AIzaSyC2XDbtFEVtKgJZ2L6EiD-IRQM_PtQa7xQ";
-
-var map;
-var drawingManager;
-var placeIdArray = [];
-var polylines = [];
-var snappedCoordinates = [];
-
-function initialize() {
-  var mapOptions = {
-    zoom: 17,
-    center: {lat: -33.8667, lng: 151.1955}
-  };
-  map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
-  // Adds a Places search box. Searching for a place will center the map on that
-  // location.
-  map.controls[google.maps.ControlPosition.RIGHT_TOP].push(
-      document.getElementById('bar'));
-  var autocomplete = new google.maps.places.Autocomplete(
-      document.getElementById('autoc'));
-  autocomplete.bindTo('bounds', map);
-  autocomplete.addListener('place_changed', function() {
-    var place = autocomplete.getPlace();
-    if (place.geometry.viewport) {
-      map.fitBounds(place.geometry.viewport);
-    } else {
-      map.setCenter(place.geometry.location);
-      map.setZoom(17);
-    }
-  });
-
-  // Enables the polyline drawing control. Click on the map to start drawing a
-  // polyline. Each click will add a new vertice. Double-click to stop drawing.
-  drawingManager = new google.maps.drawing.DrawingManager({
-    drawingMode: google.maps.drawing.OverlayType.POLYLINE,
-    drawingControl: true,
-    drawingControlOptions: {
-      position: google.maps.ControlPosition.TOP_CENTER,
-      drawingModes: [
-        google.maps.drawing.OverlayType.POLYLINE
-      ]
-    },
-    polylineOptions: {
-      strokeColor: '#696969',
-      strokeWeight: 2
-    }
-  });
-  drawingManager.setMap(map);
-
-  // Snap-to-road when the polyline is completed.
-  drawingManager.addListener('polylinecomplete', function(poly) {
-    var path = poly.getPath();
-    polylines.push(poly);
-    placeIdArray = [];
-    runSnapToRoad(path);
-  });
-
-  // Clear button. Click to remove all polylines.
-  $('#clear').click(function(ev) {
-    for (var i = 0; i < polylines.length; ++i) {
-      polylines[i].setMap(null);
-    }
-    polylines = [];
-    ev.preventDefault();
-    return false;
-  });
-}
-
-// Snap a user-created polyline to roads and draw the snapped path
-function runSnapToRoad(path) {
-  var pathValues = [];
-  for (var i = 0; i < path.getLength(); i++) {
-    pathValues.push(path.getAt(i).toUrlValue());
-  }
-
-  $.get('https://roads.googleapis.com/v1/snapToRoads', {
-    interpolate: true,
-    key: apiKey,
-    path: pathValues.join('|')
-  }, function(data) {
-    processSnapToRoadResponse(data);
-    drawSnappedPolyline();
-    getAndDrawSpeedLimits();
-  });
-}
-
-// Store snapped polyline returned by the snap-to-road service.
-function processSnapToRoadResponse(data) {
-  snappedCoordinates = [];
-  placeIdArray = [];
-  for (var i = 0; i < data.snappedPoints.length; i++) {
-    var latlng = new google.maps.LatLng(
-        data.snappedPoints[i].location.latitude,
-        data.snappedPoints[i].location.longitude);
-    snappedCoordinates.push(latlng);
-    placeIdArray.push(data.snappedPoints[i].placeId);
-  }
-}
-
-// Draws the snapped polyline (after processing snap-to-road response).
-function drawSnappedPolyline() {
-  var snappedPolyline = new google.maps.Polyline({
-    path: snappedCoordinates,
-    strokeColor: 'black',
-    strokeWeight: 3
-  });
-
-  snappedPolyline.setMap(map);
-  polylines.push(snappedPolyline);
-}
-
-// Gets speed limits (for 100 segments at a time) and draws a polyline
-// color-coded by speed limit. Must be called after processing snap-to-road
-// response.
-function getAndDrawSpeedLimits() {
-  for (var i = 0; i <= placeIdArray.length / 100; i++) {
-    // Ensure that no query exceeds the max 100 placeID limit.
-    var start = i * 100;
-    var end = Math.min((i + 1) * 100 - 1, placeIdArray.length);
-
-    drawSpeedLimits(start, end);
-  }
-}
-
-// Gets speed limits for a 100-segment path and draws a polyline color-coded by
-// speed limit. Must be called after processing snap-to-road response.
-function drawSpeedLimits(start, end) {
-    var placeIdQuery = '';
-    for (var i = start; i < end; i++) {
-      placeIdQuery += '&placeId=' + placeIdArray[i];
-    }
-
-    $.get('https://roads.googleapis.com/v1/speedLimits',
-        'key=' + apiKey + placeIdQuery,
-        function(speedData) {
-          processSpeedLimitResponse(speedData, start);
-        }
-    );
-}
-
-// Draw a polyline segment (up to 100 road segments) color-coded by speed limit.
-function processSpeedLimitResponse(speedData, start) {
-  var end = start + speedData.speedLimits.length;
-  for (var i = 0; i < speedData.speedLimits.length - 1; i++) {
-    var speedLimit = speedData.speedLimits[i].speedLimit;
-    var color = getColorForSpeed(speedLimit);
-
-    // Take two points for a single-segment polyline.
-    var coords = snappedCoordinates.slice(start + i, start + i + 2);
-
-    var snappedPolyline = new google.maps.Polyline({
-      path: coords,
-      strokeColor: color,
-      strokeWeight: 6
-    });
-    snappedPolyline.setMap(map);
-    polylines.push(snappedPolyline);
-  }
-}
-
-function getColorForSpeed(speed_kph) {
-  if (speed_kph <= 40) {
-    return 'purple';
-  }
-  if (speed_kph <= 50) {
-    return 'blue';
-  }
-  if (speed_kph <= 60) {
-    return 'green';
-  }
-  if (speed_kph <= 80) {
-    return 'yellow';
-  }
-  if (speed_kph <= 100) {
-    return 'orange';
-  }
-  return 'red';
-}
-
 });
-// $(window).load(initialize);
+
+// on the click function, pass to local storage the class of the button you're clicking on
+// if location.href=is the destination page,
+// make an array of the localtion and parseit for the .html page
+// then getlocalstoarge, run ajax call with those values and display at that page
+// var uriList = window.location.href.split('/');
+// var uri = uriList[uriList.length - 1];
+
+// IF PLANTS OPEN MODAL
+// if (uri === 'destinations') {
+    //stuff
+// }
+
+
+// Justin's functionality code //
+
+var faqModal = document.getElementById('faqModal');
+
+var faqSpan = document.getElementsByClassName("close")[2];
+
+$("#faq").on("click", function(){
+    $("#faqModal").css("display", "block");
+    $("#signupModal").css("display", "none");
+    $("#loginModal").css("display", "none");
+    $(".navigation-bar").fadeOut(0200);
+    $("html").css("width", "70%")
+})
+
+faqSpan.onclick = function() {
+    $("#faqModal").css("display", "none")
+    $(".navigation-bar").fadeIn();
+    $("html").css("width", "100%")
+}
+
+$(window).on("click", function(event) {
+    if (event.target == faqModal) {
+        faqModal.style.display = "none";
+        $(".navigation-bar").fadeIn();
+        $("html").css("width", "100%");
+    }
+});
+
+var signModal = document.getElementById('signupModal');
+
+var signSpan = document.getElementsByClassName("close")[1];
+
+$("#sign-up").on("click", function(){
+    $("#signupModal").css("display", "block");
+    $("#loginModal").css("display", "none");
+    $("#faqModal").css("display", "none");
+    $("html").css("width", "100%")
+    $(".navigation-bar").fadeOut(0200);
+});
+
+signSpan.onclick = function() {
+    $("#signupModal").css("display", "none");
+    $(".navigation-bar").fadeIn();
+}
+
+$(window).on("click", function(event) {
+    if (event.target == signModal) {
+        signModal.style.display = "none";
+        $(".navigation-bar").fadeIn();
+    }
+});
+
+var modal = document.getElementById('loginModal');
+
+var span = document.getElementsByClassName("close")[0];
+
+$("#log-in").on("click", function(){
+    $("#loginModal").css("display", "block");
+    $("#signupModal").css("display", "none");
+    $("#faqModal").css("display", "none");
+    $("html").css("width", "100%")
+    $(".navigation-bar").fadeOut(0200);
+})
+
+span.onclick = function() {
+    $("#loginModal").css("display", "none");
+    $(".input-name").empty();
+    $(".navigation-bar").fadeIn();
+}
+
+$(window).on("click", function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+        $(".navigation-bar").fadeIn();
+    }
+});
+
+var navModal = document.getElementById('navModal');
+
+var span = document.getElementsByClassName("close")[3];
+
+$("#nav-toggle").on("click", function(){
+    $("#navModal").css("display", "block");
+    $(".header").css("margin-top", "270px");
+    $(".container-space").css("margin-top", "270px");
+    $(".navigation-bar").fadeOut(0200);
+})
+
+$(window).on("click", function(event) {
+    if (event.target == navModal) {
+        navModal.style.display = "none";
+        $(".navigation-bar").fadeIn();
+        $(".header").css("margin-top", "70px");
+        $(".container-space").css("margin-top", "40px");
+    }
+});
+
+
+$("#close").on("click", function() {
+    $("#navModal").css("display", "none");
+    $(".navigation-bar").fadeIn();
+    $(".header").css("margin-top", "70px");
+    $(".container-space").css("margin-top", "40px");
+});
+
+$("#slideshow > div:gt(0)").hide();
+
+setInterval(function() { 
+  $('#slideshow > div:first')
+    .fadeOut(0800)
+    .next()
+    .fadeIn(0800)
+    .end()
+    .appendTo('#slideshow');
+},  2500);

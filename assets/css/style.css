@@ -343,6 +343,7 @@ input {
 	font-size: 35px;
 	padding-right: 0px;
 	text-align: center;
+	margin-bottom: 50px !important;
 }
 
 .experience {
@@ -356,6 +357,19 @@ input {
 .login-background, .signup-background {
 	width: 100%;
 }
+
+#log-in, #sign-up, #results-page, #faq {
+	display: none;
+}
+
+#nav-toggle {
+	display: inline;
+}
+
+.navigation-bar {
+	min-width: 320px;
+}
+
 
 }
 
@@ -371,15 +385,3 @@ input {
 }
 }
 
-@media screen and (min-width: 320px) and (max-width: 640px) {
-	#log-in, #sign-up, #results-page, #faq {
-		display: none;
-	}
-	#nav-toggle {
-		display: inline;
-	}
-	.navigation-bar {
-		min-width: 320px;
-	}
-
-}

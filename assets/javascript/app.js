@@ -264,18 +264,23 @@ $(document).ready(function() {
         var signUpPassword = $("#password1").val().trim();
 
         var signUpEmail = $("#e-mail1").val().trim();
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-        database.ref("Sign Up").push({
-            signUpUserName: signUpUserName,
-            signUpPassword: signUpPassword,
-            signUpEmail: signUpEmail,
-        })
+        if(signUpEmail.value.match(mailformat)) {
+            database.ref("Sign Up").push({
+                signUpUserName: signUpUserName,
+                signUpPassword: signUpPassword,
+                signUpEmail: signUpEmail,
+            })
 
-        $("#username1").val("");
-        $("#password1").val("");
-        $("#e-mail1").val("");
-        // prevents page from refreshing when user submits input
-        return false;
+            $("#username1").val("");
+            $("#password1").val("");
+            $("#e-mail1").val("");
+            // prevents page from refreshing when user submits input
+            return false;
+        } else {
+            $(".incorrect-email-alert").html("Enter a valid email.");
+        }
     })
 
 

@@ -109,13 +109,13 @@
 </footer>
 <div class="modal" id="loginModal">
     <div class="modal-content">
-        <span class="close">×</span> <img class="modal-logo" src="assets/images/logo.png"> <input id="username" placeholder="Username" type="text"> <input id="password" placeholder="Password" type="text"> <button id="logInButton">Log In</button>
+        <span class="close">×</span> <img class="modal-logo" src="assets/images/logo.png"> <input id="username" placeholder="Username" type="text" autocomplete="on"> <input id="password" placeholder="Password" type="text"> <button id="logInButton">Log In</button>
         <p>Don't have an account? Sign up <a href="signup.html" style="text-decoration: underline">here</a>!</p>
     </div>
 </div>
 <div class="modal" id="signupModal">
     <div class="signup-content">
-        <span class="close">×</span> <img class="modal-logo" src="assets/images/logo.png"> <input id="username1" placeholder="Username" type="text"> <input id="password1" placeholder="Password" type="text"> <input id="e-mail1" placeholder="E-Mail" type="text"> <button id="signUpButton">Sign Up</button>
+        <span class="close">×</span> <img class="modal-logo" src="assets/images/logo.png"> <input id="username1" placeholder="Username" type="text" autocomplete="on"> <input id="password1" placeholder="Password" type="text"> <input id="e-mail1" placeholder="E-Mail" type="text" autocomplete="on"><span class="incorrect-email-alert"></span> <button id="signUpButton">Sign Up</button>
         <p>Already have an account? Log-in <a href="login.html" style="text-decoration: underline">here</a>!</p>
     </div>
 </div>
@@ -165,7 +165,7 @@
 </div>
 <div class="modal" id="search-modal">
     <div class="modal-content">
-        <span class="search-close">×</span> <input id="city-input" placeholder="City" type="text"> <input id="state-input" placeholder="State" type="text"> <button id="add-user-input">Search</button>
+        <span class="search-close">×</span> <input id="city-input" placeholder="City" type="text" autocomplete="on"> <input id="state-input" placeholder="State Abbreviation" type="text" maxlength="2" autocomplete="on"> <button id="add-user-input">Search</button>
     </div>
 </div>
 <script src="assets/javascript/app.js">

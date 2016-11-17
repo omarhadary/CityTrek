@@ -3,19 +3,17 @@
 .buttons {
 	margin-top: 25%;
 }
-
 .weather-API {
 	border: solid;
 }
-
 .weather-city {
 	text-align: center;
 	font-size: 150%;
 }
-
 .weather-time {
 	text-align: center;
 }
+
 /*............................................*/
 
 html, body {
@@ -25,18 +23,14 @@ html, body {
 	font-smoothing: antialiased;
 	background-image: url('../images/background.jpg');
 }
-
 body {
 	display: flex;
 	min-height: 100vh;
 	flex-direction: column;
-
 }
-
 main {
 	flex: 1 0 auto;
 }
-
 .background {
 	width: 80%;
 	height: 100% !important;
@@ -44,7 +38,6 @@ main {
 	margin: 0 auto 0;
 	background-color: white;
 }
-
 .login-background, .signup-background {
 	width: 80%;
 	height: 100% !important;
@@ -53,16 +46,13 @@ main {
 	background-color: white;
 	text-align: center;
 }
-
 .container-space {
-	margin-top:70px;
+	margin-top: 70px;
 }
-
 .destination-space {
-	margin-top:150px;
+	margin-top: 150px;
 	font-size: 20px;
 }
-
 .header {
 	margin: 70px auto;
 	width: 75%;
@@ -71,24 +61,20 @@ main {
 	font-size: 50px;
 	text-align: center;
 }
-
 .page-footer {
 	margin-top: 0 !important;
 	bottom: 0 !important;
 }
-
 .experience {
 	color: orange;
 	font-size: 55px;
 	font-weight: bold;
 }
-
 .text {
 	font-size: 35px;
 	font-weight: bold;
 	margin-bottom: 30px;
 }
-
 #search-bar {
 	border: 1px solid #ccc !important;
 	position: static !important;
@@ -96,7 +82,6 @@ main {
 	height: 70px;
 	font-size: 20px !important;
 }
-
 .navigation-bar {
 	margin: 0 auto;
 	width: 100%;
@@ -112,34 +97,27 @@ main {
 	margin-left: 10px;
 	margin-top: 10px;
 }
-
 .modal-logo {
 	width: 300px;
 	height: 63px;
 	margin-bottom: 20px;
 }
-
 .nav-logo {
 	height: 40px;
 	margin-top: 5px;
-	background-color:white;
+	background-color: white;
 }
-
 .faq-logo {
 	height: 40px;
 	margin-top: 5px;
 	background-color: white;
 	margin-left: -30px;
 }
-
-
 .placeholder {
 	margin: -80px auto !important;
 	text-align: center;
 	width: 85%;
-
 }
-
 #home, #log-in, #sign-up, #search-button, #results-page, #faq, #nav-toggle, #results-page {
 	float: right;
 	line-height: 20px;
@@ -148,21 +126,18 @@ main {
 	padding: 15px;
 	border-left: 1px solid #ccc;
 	text-align: center;
-	-o-transition:.7s;
-	-ms-transition:.7s;
-	-moz-transition:.7s;
-	-webkit-transition:.7s;
-	transition:.7s;
+	-o-transition: .7s;
+	-ms-transition: .7s;
+	-moz-transition: .7s;
+	-webkit-transition: .7s;
+	transition: .7s;
 }
-
 #nav-toggle {
 	display: none;
 }
-
 #nav-toggle {
 	display: none;
 }
-
 #logInButton, #signUpButton, #submit, #add-user-input {
 	width: 95%;
 	text-align: center;
@@ -172,12 +147,10 @@ main {
 	color: white;
 	height: 40px;
 }
-
 #log-in:hover, #sign-up:hover, #faq:hover, #nav-toggle:hover, #results-page:hover {
 	background-color: #ddd;
 	cursor: pointer;
 }
-
 .modal {
 	display: none;
 	position: fixed;
@@ -187,30 +160,27 @@ main {
 	height: 100% !important;
 	min-height: 100% !important;
 	overflow: visible !important;
-	background-color: rgb(0,0,0)!important;
-	background-color: rgba(0,0,0,0.4)!important;
+	background-color: rgb(0, 0, 0)!important;
+	background-color: rgba(0, 0, 0, 0.4)!important;
 }
-
 .modal-content {
 	background-color: #ffffff;
 	margin: 100px auto;
 	width: 25%;
 	height: 70%;
-	text-align:center;
+	text-align: center;
 	min-width: 360px;
 }
-
 .signup-content {
 	background-color: #ffffff;
 	margin: 50px auto;
 	width: 25%;
 	height: 70%;
 	min-height: 500px;
-	text-align:center;
+	text-align: center;
 	min-width: 360px;
 	padding: 30px;
 }
-
 .sideModal {
 	display: none;
 	position: fixed;
@@ -221,7 +191,6 @@ main {
 	min-height: 100% !important;
 	overflow: visible !important;
 }
-
 .topModal {
 	display: none;
 	position: fixed;
@@ -233,7 +202,6 @@ main {
 	min-height: 100% !important;
 	overflow: visible !important;
 }
-
 .faq-content {
 	background-color: #fff;
 	float: right;
@@ -246,7 +214,6 @@ main {
 	border-left: 1px solid #ccc;
 	overflow: scroll !important;
 }
-
 .nav-content {
 	background-color: #fff;
 	top: 0;
@@ -255,11 +222,9 @@ main {
 	text-align: center;
 	min-width: 360px;
 }
-
 #close {
 	border-bottom: 1px solid #ccc !important;
 }
-
 #toggle, #close {
 	width: 100%;
 	height: 50px;
@@ -270,29 +235,24 @@ main {
 	font-size: 15px;
 	border-top: 1px solid #ccc;
 }
-
 #close:hover, #toggle:hover {
 	background-color: #ccc;
 	color: white;
 	border: 1px solid #ccc;
 }
-
 ul li {
 	list-style-type: disc !important;
 	list-style-position: outside !important;
 }
-
 input {
 	border: 1px solid black !important;
 	padding-left: 5px !important;
 	width: 90% !important;
 	padding-bottom: 0;
 }
-
 a {
 	color: black !important;
 }
-
 .close {
 	color: #aaaaaa;
 	float: right;
@@ -301,49 +261,39 @@ a {
 	margin: 0;
 	padding: 0;
 }
-
-.close:hover,
-.close:focus {
+.close:hover, .close:focus {
 	color: #000;
 	text-decoration: none;
 	cursor: pointer;
 }
-
 #slideshow {
 	margin: -60px auto;
 	position: relative;
 	width: 95%;
 	text-align: center;
 }
-
-#slideshow > div {
+#slideshow>div {
 	position: absolute;
 }
-
 #slideImages {
 	width: 100%;
 }
-
 #icon {
 	width: 40px;
 	height: 40px;
 	margin: 2px;
 }
-
 .toggle {
-	display:none;
+	display: none;
 }
-
 @media screen and (max-width: 640px) and (min-width: 0px) {
 	#log-in, #sign-up, #faq, #results-page {
 		display: none;
 	}
-
 	#nav-toggle {
 		display: inline;
 	}
 	/* Modal Content */
-
 	.modal-content {
 		background-color: #fff;
 		margin: 100px auto;
@@ -353,41 +303,37 @@ a {
 		text-align: center;
 		min-width: 360px;
 	}
-
 	.navigation-bar {
 		min-width: 320px;
 	}
-
 	.header {
 		font-size: 35px;
 		padding-right: 0px;
 		text-align: center;
 		margin-bottom: 80px !important;
 	}
-
 	.background {
-		width:100%;
+		width: 100%;
 	}
-
 	.login-background, .signup-background {
 		width: 100%;
 	}
-
 	#log-in, #sign-up, #results-page, #faq {
 		display: none;
 	}
-
 	#nav-toggle {
 		display: inline;
 	}
-
 	.navigation-bar {
 		min-width: 320px;
 	}
-
 }
+
 /*Map Styling*/
+
+
 /************************************************************/
+
 #map {
 	position: absolute;
 	top: 20%;
@@ -395,37 +341,31 @@ a {
 	width: 50%;
 	margin-left: 10%;
 }
-
-#inputs,
-#errors,
-#directions {
+#inputs, #errors, #directions {
 	position: absolute;
 	width: 33.3333%;
 	max-width: 300px;
 	min-width: 200px;
 }
-
 #inputs {
 	z-index: 10;
 	top: 30%;
 	left: 10px;
 }
-
 #directions {
 	z-index: 99;
-	background: rgba(0,0,0,.8);
+	background: rgba(0, 0, 0, .8);
 	top: 20%;
 	right: 0;
 	bottom: 0;
 	overflow: auto;
 }
-
 #errors {
 	z-index: 8;
 	opacity: 0;
 	padding: 10px;
 	border-radius: 0 0 3px 3px;
-	background: rgba(0,0,0,.25);
+	background: rgba(0, 0, 0, .25);
 	top: 90px;
 	left: 10px;
 }

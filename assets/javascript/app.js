@@ -19,10 +19,6 @@ $(document).ready(function() {
         state: "CO",
         image: "assets/images/Denver.png"
     }, {
-        city: "Atlanta",
-        state: "GA",
-        image: "assets/images/Atlanta.png"
-    }, {
         city: "Austin",
         state: "TX",
         image: "assets/images/Austin.png"
@@ -40,7 +36,7 @@ $(document).ready(function() {
     function showCity() {
         $(".buttons").empty();
         for (var i = 0; i < locations.length; i++) {
-            buttons = $("<img>");
+            var buttons = $("<img>");
             buttons.attr("src", locations[i].image)
             buttons.attr("data-city", locations[i].city);
             buttons.attr("data-state", locations[i].state);
@@ -53,21 +49,11 @@ $(document).ready(function() {
     // get Weather API results for pre-selected locations and append to page
     function displayWeather() {
 
-// on the click function, pass to local storage the class of the button you're clicking on
-// if location.href=is the destination page,
-// make an array of the localtion and parseit for the .html page
-// then getlocalstoarge, run ajax call with those values and display at that page
-// var uriList = window.location.href.split('/');
-// var uri = uriList[uriList.length - 1];
 
-// IF PLANTS OPEN MODAL
-// if (uri === 'destinations') {
-        //stuff
-// }
 
         cityName = $(this).data("city");
         stateName = $(this).data("state");
-        alert("cityName: " + cityName + "stateName: " + stateName);
+        // alert("cityName: " + cityName + "stateName: " + stateName);
         localStorage.setItem("localStorageCityName", cityName);
         localStorage.setItem("localStorageStateName", stateName);
 
@@ -76,80 +62,83 @@ $(document).ready(function() {
         // alert(localStorageCityName);
         var localStorageStateName = localStorage.getItem("localStorageStateName");
         var queryURL = "http://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + localStorageStateName + "/" + localStorageCityName + ".json";
-        alert(queryURL);
-
+        // alert(queryURL);
 
         $(document).ready(function($) {
-            alert("almost works");
-
-
             $.ajax({
                 url: queryURL,
                 dataType: "jsonp",
                 success: function(parsed_json) {
                     var location = parsed_json["current_observation"]["display_location"]["full"];
-                    var weather = parsed_json["current_observation"]["temp_f"];
+                    var localTime = parsed_json["current_observation"]["local_time_rfc822"];
+                    var temp = parsed_json["current_observation"]["temperature_string"];
+                    var weather = parsed_json["current_observation"]["weather"];
+                    var precipitation = parsed_json["current_observation"]["precip_today_string"];
                     var humidity = parsed_json["current_observation"]["relative_humidity"];
                     var windSpeed = parsed_json["current_observation"]["wind_mph"];
                     var windDirection = parsed_json["current_observation"]["wind_dir"];
                     var weatherIcon = $("<img>");
                     weatherIcon.attr("src", parsed_json["current_observation"]["icon_url"]);
-                    var temp = parsed_json["current_observation"]["weather"];
+
                     // var forecast = parsed_json["forecast"]["simpleforecast"]["forecastday"]["date"];
                     // var forecast = parsed_json["forecast"]["txt_forecast"]["forecastday.indexOf[0]"];
                     // prepend the weatherDiv to the page
-                    weatherDiv.append("Location: " + location);
-                    weatherDiv.append("...Temperature: " + weather + "\xB0F...");
-                    weatherDiv.append("...Humidity: " + humidity + "...");
-                    weatherDiv.append("...Wind Speed: " + windSpeed + " mph...");
-                    weatherDiv.append("...Wind Direction: " + windDirection + "...");
-                    // weatherDiv.append("...Forecast: " + forecast + "...");
+                    weatherDiv.append("Location: " + location + "...");
+                    weatherDiv.append("Local Time: " + localTime + "...");
                     weatherDiv.append(weatherIcon);
-                    weatherDiv.append("..." + temp);
+                    weatherDiv.append("...Conditions: " + weather + "...");
+                    weatherDiv.append("Temperature: " + temp + "...");
+                    weatherDiv.append("precipitation: " + precipitation + "...");
+                    weatherDiv.append("Wind Speed: " + windSpeed + " mph...");
+                    weatherDiv.append("Wind Direction: " + windDirection + "...");
+                    weatherDiv.append("...Humidity: " + humidity);
+                    // weatherDiv.append("...Forecast: " + forecast + "...");
+
                     $(".cities").prepend(weatherDiv);
-                    alert("works");
 
                 },
                 error: function(error) {
                     alert('error; ' + eval(error));
                 }
-
-
+            });
         });
-
-        });
-
     }
     // get Weather API results for new locations and append to page
     function displayNewWeather() {
         var newWeatherDiv = $("<div>");
         var queryURL = "http://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + newState + "/" + newCity + ".json";
-
         $(document).ready(function($) {
-
             $.ajax({
                 url: queryURL,
                 dataType: "jsonp",
                 success: function(parsed_json) {
                     var location = parsed_json["current_observation"]["display_location"]["full"];
-                    var weather = parsed_json["current_observation"]["temp_f"];
+                    var localTime = parsed_json["current_observation"]["local_time_rfc822"];
+                    var temp = parsed_json["current_observation"]["temperature_string"];
+                    var weather = parsed_json["current_observation"]["weather"];
+                    var precipitation = parsed_json["current_observation"]["precip_today_string"];
                     var humidity = parsed_json["current_observation"]["relative_humidity"];
                     var windSpeed = parsed_json["current_observation"]["wind_mph"];
                     var windDirection = parsed_json["current_observation"]["wind_dir"];
                     var weatherIcon = $("<img>");
                     weatherIcon.attr("src", parsed_json["current_observation"]["icon_url"]);
-                    var temp = parsed_json["current_observation"]["weather"];
+
                     // var forecast = parsed_json["forecast"]["simpleforecast"]["forecastday"]["date"];
                     // var forecast = parsed_json["forecast"]["txt_forecast"]["forecastday.indexOf[0]"];
                     // prepend the weatherDiv to the page
-                    newWeatherDiv.append("Location: " + location);
-                    newWeatherDiv.append("...Temperature: " + weather + "\xB0F...");
-                    newWeatherDiv.append("...Humidity: " + humidity + "...");
-                    newWeatherDiv.append("...Wind Speed: " + windSpeed + " mph...");
-                    newWeatherDiv.append("...Wind Direction: " + windDirection + "...");
+                    newWeatherDiv.append("Location: " + location + "...");
+                    newWeatherDiv.append("Local Time: " + localTime + "...");
                     newWeatherDiv.append(weatherIcon);
-                    newWeatherDiv.append("..." + temp);
-                    $(".new-cities").prepend(newWeatherDiv);
+                    newWeatherDiv.append("...Conditions: " + weather + "...");
+                    newWeatherDiv.append("Temperature: " + temp + "...");
+                    newWeatherDiv.append("precipitation: " + precipitation + "...");
+                    newWeatherDiv.append("Wind Speed: " + windSpeed + " mph...");
+                    newWeatherDiv.append("Wind Direction: " + windDirection + "...");
+                    newWeatherDiv.append("...Humidity: " + humidity);
+                    // weatherDiv.append("...Forecast: " + forecast + "...");
+
+
+                    $(".cities").prepend(newWeatherDiv);
                 },
                 error: function(error) {
                     alert('error; ' + eval(error));
@@ -165,7 +154,7 @@ $(document).ready(function() {
         });
         newState = $("#state-input").val().trim();
         newStateDB = newState.toUpperCase();
-        database.ref().push({
+        database.ref("Destinations").push({
             newCity: newCityDB,
             newState: newStateDB,
         })
@@ -176,7 +165,7 @@ $(document).ready(function() {
         return false;
     })
     // when user input is added to Firebase, append the stored values to the page
-    database.ref().on("child_added", function(childSnapshot) {
+    database.ref("Destinations").on("child_added", function(childSnapshot) {
         $(".added-destination").append("<tr>+<td>" + "<button>Destination Link</button>" + "<td>" + childSnapshot.val().newCity + "<td>" + childSnapshot.val().newState);
     });
     // create on click event handler to display the weather if any of the topic buttons are clicked
@@ -189,8 +178,8 @@ $(document).ready(function() {
 
         // for (var j = 0; j < locations.length; j++) {
         //     cityName = locations[j].city;
-            // alert(cityName);
-            // stateName = locations[j].state;
+        // alert(cityName);
+        // stateName = locations[j].state;
 
         //     cityName = $(this).data("city");
         // stateName = $(this).data("state");
@@ -202,7 +191,7 @@ $(document).ready(function() {
 
         // }
 
-            window.location.href = "destinations.html";
+        window.location.href = "destinations.html";
 
 
 
@@ -213,22 +202,93 @@ $(document).ready(function() {
     showCity();
 
 // Get the search modal
-var searchModal = document.getElementById("search-modal");
-var searchButton = document.getElementById("search-button");
-var searchSpan = document.getElementsByClassName("search-close")[0];
-searchButton.onclick = function() {
-    searchModal.style.display = "block";
-}
-searchSpan.onclick = function() {
-    searchModal.style.display = "none";
-}
-window.onclick = function(event) {
-    if (event.target == searchModal) {
+    var searchModal = document.getElementById("search-modal");
+    var searchButton = document.getElementById("search-button");
+    var searchSpan = document.getElementsByClassName("search-close")[0];
+    searchButton.onclick = function() {
+        searchModal.style.display = "block";
+    }
+    searchSpan.onclick = function() {
         searchModal.style.display = "none";
     }
-}
-});
+    window.onclick = function(event) {
+        if (event.target == searchModal) {
+            searchModal.style.display = "none";
+        }
+    }
 
+// create on click event handler to take login username and password and store in firebase
+    $("#logInButton").on("click", function() {
+        var loginUserName = $("#username").val().trim();
+
+        var loginPassword = $("#password").val().trim();
+
+        database.ref("login").push({
+            loginUserName: loginUserName,
+            loginPassword: loginPassword,
+        })
+
+        $("#username").val("");
+        $("#password").val("");
+        // prevents page from refreshing when user submits input
+        return false;
+    })
+
+// create on click event handler to take Sign Up username, password and email and store in firebase
+    $("#signUpButton").on("click", function() {
+        var signUpUserName = $("#username1").val().trim();
+
+        var signUpPassword = $("#password1").val().trim();
+
+        var signUpEmail = $("#e-mail1").val().trim();
+
+        database.ref("Sign Up").push({
+            signUpUserName: signUpUserName,
+            signUpPassword: signUpPassword,
+            signUpEmail: signUpEmail,
+        })
+
+        $("#username1").val("");
+        $("#password1").val("");
+        $("#e-mail1").val("");
+        // prevents page from refreshing when user submits input
+        return false;
+    })
+
+
+
+
+// MapBox API code
+// ************************************************************************************
+L.mapbox.accessToken = 'pk.eyJ1Ijoic2xpY2t0b25lIiwiYSI6ImNpdmxub2c5ZTA1N2MyenF0OWZweXo2Y3MifQ.-NOxV9teamyijL1FWXSMmA';
+
+var map = L.mapbox.map('map', 'mapbox.streets', {
+    zoomControl: false
+}).setView([40, -74.50], 9);
+
+// move the attribution control out of the way
+map.attributionControl.setPosition('bottomleft');
+
+// create the initial directions object, from which the layer
+// and inputs will pull data.
+var directions = L.mapbox.directions();
+
+var directionsLayer = L.mapbox.directions.layer(directions)
+    .addTo(map);
+
+var directionsInputControl = L.mapbox.directions.inputControl('inputs', directions)
+    .addTo(map);
+
+var directionsErrorsControl = L.mapbox.directions.errorsControl('errors', directions)
+    .addTo(map);
+
+var directionsRoutesControl = L.mapbox.directions.routesControl('routes', directions)
+    .addTo(map);
+
+var directionsInstructionsControl = L.mapbox.directions.instructionsControl('instructions', directions)
+    .addTo(map);
+
+// ************************************************************************************
 
 
 
@@ -337,3 +397,15 @@ $("#close").on("click", function() {
     $(".container-space").css("margin-top", "40px");
 });
 
+$("#slideshow > div:gt(0)").hide();
+
+setInterval(function() {
+    $('#slideshow > div:first')
+        .fadeOut(0800)
+        .next()
+        .fadeIn(0800)
+        .end()
+        .appendTo('#slideshow');
+},  2500);
+
+});

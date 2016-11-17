@@ -163,6 +163,7 @@ html, body {
     position: fixed; 
     z-index: 10;
     left: 0;
+    top: 0 !important;
     width: 100% !important;
     height: 100% !important;
     min-height: 100% !important;
@@ -196,6 +197,7 @@ html, body {
     position: fixed; 
     z-index: 10;
     right: 0;
+    top: 0 !important;
     width: 100% !important;
     height: 100% !important;
     min-height: 100% !important;

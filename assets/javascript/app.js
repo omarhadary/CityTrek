@@ -33,11 +33,14 @@ $(document).ready(function() {
     }];
     var newCity;
     var newState;
+    var cityName;
+    var stateName;
+    var buttons;
 
     function showCity() {
         $(".buttons").empty();
         for (var i = 0; i < locations.length; i++) {
-            var buttons = $("<img>");
+            buttons = $("<img>");
             buttons.attr("src", locations[i].image)
             buttons.attr("data-city", locations[i].city);
             buttons.attr("data-state", locations[i].state);
@@ -50,13 +53,36 @@ $(document).ready(function() {
     // get Weather API results for pre-selected locations and append to page
     function displayWeather() {
 
+// on the click function, pass to local storage the class of the button you're clicking on
+// if location.href=is the destination page,
+// make an array of the localtion and parseit for the .html page
+// then getlocalstoarge, run ajax call with those values and display at that page
+// var uriList = window.location.href.split('/');
+// var uri = uriList[uriList.length - 1];
 
+// IF PLANTS OPEN MODAL
+// if (uri === 'destinations') {
+        //stuff
+// }
+
+        cityName = $(this).data("city");
+        stateName = $(this).data("state");
+        alert("cityName: " + cityName + "stateName: " + stateName);
+        localStorage.setItem("localStorageCityName", cityName);
+        localStorage.setItem("localStorageStateName", stateName);
 
         var weatherDiv = $("<div>");
-        var cityName = $(this).data("city");
-        var stateName = $(this).data("state");
-        var queryURL = "http://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + stateName + "/" + cityName + ".json";
+        var localStorageCityName = localStorage.getItem("localStorageCityName");
+        // alert(localStorageCityName);
+        var localStorageStateName = localStorage.getItem("localStorageStateName");
+        var queryURL = "http://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + localStorageStateName + "/" + localStorageCityName + ".json";
+        alert(queryURL);
+
+
         $(document).ready(function($) {
+            alert("almost works");
+
+
             $.ajax({
                 url: queryURL,
                 dataType: "jsonp",
@@ -81,15 +107,26 @@ $(document).ready(function() {
                     weatherDiv.append(weatherIcon);
                     weatherDiv.append("..." + temp);
                     $(".cities").prepend(weatherDiv);
+                    alert("works");
+
+                },
+                error: function(error) {
+                    alert('error; ' + eval(error));
                 }
-            });
+
+
         });
+
+        });
+
     }
     // get Weather API results for new locations and append to page
     function displayNewWeather() {
         var newWeatherDiv = $("<div>");
         var queryURL = "http://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + newState + "/" + newCity + ".json";
+
         $(document).ready(function($) {
+
             $.ajax({
                 url: queryURL,
                 dataType: "jsonp",
@@ -143,13 +180,35 @@ $(document).ready(function() {
         $(".added-destination").append("<tr>+<td>" + "<button>Destination Link</button>" + "<td>" + childSnapshot.val().newCity + "<td>" + childSnapshot.val().newState);
     });
     // create on click event handler to display the weather if any of the topic buttons are clicked
-    $(document).on('click', ".city-button", displayWeather);
+    $(document).on('click', ".city-button", "#destination-link", displayWeather);
     // function to navigate to destinations page
-    // function destinationsPage() {
+    function destinationsPage() {
         // $(".buttons").attr('href','destinations.html');
         // buttons.attr("href", "destinations.html");
-        // window.location.assign("destinations.html");
-    // }
+
+
+        // for (var j = 0; j < locations.length; j++) {
+        //     cityName = locations[j].city;
+            // alert(cityName);
+            // stateName = locations[j].state;
+
+        //     cityName = $(this).data("city");
+        // stateName = $(this).data("state");
+        // alert("cityName: " + cityName + "stateName: " + stateName);
+        //     localStorage.setItem("localStorageCityName", cityName);
+        //     localStorage.setItem("localStorageStateName", stateName);
+
+
+
+        // }
+
+            window.location.href = "destinations.html";
+
+
+
+
+        displayWeather();
+    }
     // run function to show the topics buttons
     showCity();
 
@@ -170,17 +229,7 @@ window.onclick = function(event) {
 }
 });
 
-// on the click function, pass to local storage the class of the button you're clicking on
-// if location.href=is the destination page,
-// make an array of the localtion and parseit for the .html page
-// then getlocalstoarge, run ajax call with those values and display at that page
-// var uriList = window.location.href.split('/');
-// var uri = uriList[uriList.length - 1];
 
-// IF PLANTS OPEN MODAL
-// if (uri === 'destinations') {
-    //stuff
-// }
 
 
 // Justin's functionality code //

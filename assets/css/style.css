@@ -4,7 +4,18 @@
 	margin-top: 25%;
 }
 
+.weather-API {
+	border: solid;
+}
 
+.weather-city {
+	text-align: center;
+	font-size: 150%;
+}
+
+.weather-time {
+	text-align: center;
+}
 /*............................................*/
 
 html, body {

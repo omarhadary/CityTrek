@@ -36,7 +36,7 @@ $(document).ready(function() {
     function showCity() {
         $(".buttons").empty();
         for (var i = 0; i < locations.length; i++) {
-            var buttons = $("<img>");
+            buttons = $("<img>");
             buttons.attr("src", locations[i].image)
             buttons.attr("data-city", locations[i].city);
             buttons.attr("data-state", locations[i].state);
@@ -49,7 +49,17 @@ $(document).ready(function() {
     // get Weather API results for pre-selected locations and append to page
     function displayWeather() {
 
+// on the click function, pass to local storage the class of the button you're clicking on
+// if location.href=is the destination page,
+// make an array of the localtion and parseit for the .html page
+// then getlocalstoarge, run ajax call with those values and display at that page
+// var uriList = window.location.href.split('/');
+// var uri = uriList[uriList.length - 1];
 
+// IF PLANTS OPEN MODAL
+// if (uri === 'destinations') {
+        //stuff
+// }
 
         cityName = $(this).data("city");
         stateName = $(this).data("state");
@@ -64,7 +74,11 @@ $(document).ready(function() {
         var queryURL = "http://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + localStorageStateName + "/" + localStorageCityName + ".json";
         // alert(queryURL);
 
+
         $(document).ready(function($) {
+            // alert("almost works");
+
+
             $.ajax({
                 url: queryURL,
                 dataType: "jsonp",
@@ -83,31 +97,38 @@ $(document).ready(function() {
                     // var forecast = parsed_json["forecast"]["simpleforecast"]["forecastday"]["date"];
                     // var forecast = parsed_json["forecast"]["txt_forecast"]["forecastday.indexOf[0]"];
                     // prepend the weatherDiv to the page
-                    weatherDiv.append("Location: " + location + "...");
-                    weatherDiv.append("Local Time: " + localTime + "...");
-                    weatherDiv.append(weatherIcon);
-                    weatherDiv.append("...Conditions: " + weather + "...");
-                    weatherDiv.append("Temperature: " + temp + "...");
-                    weatherDiv.append("precipitation: " + precipitation + "...");
-                    weatherDiv.append("Wind Speed: " + windSpeed + " mph...");
-                    weatherDiv.append("Wind Direction: " + windDirection + "...");
-                    weatherDiv.append("...Humidity: " + humidity);
+                    $(".weather-city").html(location);
+                    $(".weather-time").html("Local Time: " + localTime);
+                    $(".weather-icon").html(weatherIcon);
+                    $(".weather-condition").html(weather);
+                    $(".weather-temp").html("Temp: " + temp);
+                    $(".weather-precipitation").html("Precipitation: " + precipitation);
+                    $(".weather-wind-speed").html("Wind Speed: " + windSpeed + " mph");
+                    $(".weather-wind-direction").html("Wind Direction: " + windDirection);
+                    $(".weather-humidity").html("Humidity: " + humidity);
                     // weatherDiv.append("...Forecast: " + forecast + "...");
 
-                    $(".cities").prepend(weatherDiv);
+                    // $(".cities").prepend(weatherDiv);
+                    // alert("works");
 
                 },
                 error: function(error) {
                     alert('error; ' + eval(error));
                 }
+
+
             });
+
         });
+
     }
     // get Weather API results for new locations and append to page
     function displayNewWeather() {
         var newWeatherDiv = $("<div>");
         var queryURL = "http://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + newState + "/" + newCity + ".json";
+
         $(document).ready(function($) {
+
             $.ajax({
                 url: queryURL,
                 dataType: "jsonp",
@@ -126,19 +147,20 @@ $(document).ready(function() {
                     // var forecast = parsed_json["forecast"]["simpleforecast"]["forecastday"]["date"];
                     // var forecast = parsed_json["forecast"]["txt_forecast"]["forecastday.indexOf[0]"];
                     // prepend the weatherDiv to the page
-                    newWeatherDiv.append("Location: " + location + "...");
-                    newWeatherDiv.append("Local Time: " + localTime + "...");
-                    newWeatherDiv.append(weatherIcon);
-                    newWeatherDiv.append("...Conditions: " + weather + "...");
-                    newWeatherDiv.append("Temperature: " + temp + "...");
-                    newWeatherDiv.append("precipitation: " + precipitation + "...");
-                    newWeatherDiv.append("Wind Speed: " + windSpeed + " mph...");
-                    newWeatherDiv.append("Wind Direction: " + windDirection + "...");
-                    newWeatherDiv.append("...Humidity: " + humidity);
+                    $(".weather-city").html(location);
+                    $(".weather-time").html("Local Time: " + localTime);
+                    $(".weather-icon").html(weatherIcon);
+                    $(".weather-condition").html(weather);
+                    $(".weather-temp").html("Temp: " + temp);
+                    $(".weather-precipitation").html("Precipitation: " + precipitation);
+                    $(".weather-wind-speed").html("Wind Speed: " + windSpeed + " mph");
+                    $(".weather-wind-direction").html("Wind Direction: " + windDirection);
+                    $(".weather-humidity").html("Humidity: " + humidity);
                     // weatherDiv.append("...Forecast: " + forecast + "...");
 
 
-                    $(".cities").prepend(newWeatherDiv);
+
+                    // $(".cities").prepend(newWeatherDiv);
                 },
                 error: function(error) {
                     alert('error; ' + eval(error));
@@ -216,6 +238,7 @@ $(document).ready(function() {
             searchModal.style.display = "none";
         }
     }
+
 
 // create on click event handler to take login username and password and store in firebase
     $("#logInButton").on("click", function() {

@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>CityTrek</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta charset="UTF-8">
+    <title>CityTrek</title>
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js">
     </script>
@@ -12,26 +11,26 @@
     <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js">
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" rel="stylesheet">
-    <link href="assets/style.css" rel="stylesheet" type="text/css">
     <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'>
     </script>
     <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet'>
-    <script src='https://api.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.4.0/mapbox.directions.js'>
-    </script>
-    <link href='https://api.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.4.0/mapbox.directions.css' rel='stylesheet' type='text/css'>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 </head>
 <body>
 <div class="navigation-bar white">
-    <a href="index.html"><img class="logo" src="assets/images/logo.png">
-        <div id="log-in">
-            Log In
-        </div>
-        <div id="sign-up">
-            Sign Up
-        </div></a> <a href="destinations.html">
+    <a href="index.html"><img class="logo" src="assets/images/logo.png"></a>
+    <div id="log-in">
+        Log In
+    </div>
+    <div id="sign-up">
+        Sign Up
+    </div><a href="destinations.html">
     <div id="results-page">
         Destinations
     </div></a>
+    <div id="search-button">
+        Search
+    </div>
     <div id="faq">
         FAQ
     </div>
@@ -42,32 +41,39 @@
 <header></header>
 <div class="background">
     <main class="placeholder">
-        <div class="destination-space">
-            <div class="row">
-                <div class="row buttons"></div>
-            </div>
+        <div class="row">
+            <div class="row buttons"></div>
         </div>
         <div class="row">
-            <div class="col-sm-4 cities"></div>
-        </div>
-        <div class="row">
-            <div class="col-sm-8 mapAPI">
-                <div id='map'></div>
-                <div id='inputs'></div>
-                <div id='errors'></div>
-                <div id='directions'>
-                    <div id='routes'></div>
-                    <div id='instructions'></div>
+            <div class="col s5 weather-API">
+                <div class="row">
+                    <div class="weather-city"></div>
+                    <div class="weather-time"></div>
+                </div>
+                <div class="row">
+                    <div class="col s4">
+                        <div class="weather-icon"></div>
+                        <div class="weather-condition"></div>
+                    </div>
+                    <div class="col s8">
+                        <div class="weather-temp"></div>
+                        <div class="weather-precipitation"></div>
+                        <div class="weather-wind-speed"></div>
+                        <div class="weather-wind-direction"></div>
+                        <div class="weather-humidity"></div>
+                    </div>
                 </div>
             </div>
+            <div class="col s7 map-API"></div>
         </div>
+
         <div class="panel panel-default">
             <div class="panel-heading" id="table-heading">
                 Search History
             </div>
             <table class="table added-destination">
                 <tr>
-                    <th>Destination</th>
+                    <th id='destination-link'>Destination</th>
                     <th>City</th>
                     <th>State</th>
                 </tr>
@@ -83,7 +89,15 @@
                 <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
             </div>
             <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Follow us!</h5><a class="grey-text text-lighten-3" href="#!"><img id="icon" src="assets/images/fbicon.png"></a> <a class="grey-text text-lighten-3" href="#!"><img id="icon" src="assets/images/igicon.png"></a> <a class="grey-text text-lighten-3" href="#!"><img id="icon" src="assets/images/twittericon.png"></a>
+                <h5 class="white-text">Links</h5>
+                <ul>
+                    <li>
+                        <a class="grey-text text-lighten-3" href="#!">Link 1</a>
+                    </li>
+                    <li>
+                        <a class="grey-text text-lighten-3" href="#!">Link 2</a>
+                    </li>
+                </ul>
             </div>
         </div>
         <div class="footer-copyright">
@@ -147,6 +161,11 @@
         <div id="close">
             Close
         </div>
+    </div>
+</div>
+<div class="modal" id="search-modal">
+    <div class="modal-content">
+        <span class="search-close">×</span> <input id="city-input" placeholder="City" type="text"> <input id="state-input" placeholder="State" type="text"> <button id="add-user-input">Search</button>
     </div>
 </div>
 <script src="assets/javascript/app.js">

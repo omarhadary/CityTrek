@@ -86,7 +86,6 @@ html, body {
 	position: fixed;
 	z-index: 100000;
 }
-
 .logo {
 	width: 144px;
 	height: 30px;
@@ -118,6 +117,7 @@ html, body {
 	margin: -80px auto !important;
 	text-align: center;
 	width: 85%;
+
 }
 
 #home, #log-in, #sign-up, #search-button, #results-page, #faq, #nav-toggle, #results-page {
@@ -142,7 +142,6 @@ html, body {
 #nav-toggle {
 	display: none;
 }
-
 
 #logInButton, #signUpButton, #submit, #add-user-input {
 	width: 95%;
@@ -339,60 +338,6 @@ a {
 	min-width: 320px;
 }
 
-
-
-
-/***********************************************/
-/*Styling For the Google API Map*/
-html, body, #map {
-	height: 100%!important;
-	
-	margin: 0px;
-	padding: 0px;
-}
-
-#panel {
-	position: absolute;
-	top: 5px;
-	left: 50%;
-	margin-left: -180px;
-	z-index: 5;
-	background-color: #fff;
-	padding: 5px;
-	border: 1px solid #999;
-}
-
-#bar {
-	width: 240px;
-	background-color: rgba(255, 255, 255, 0.75);
-	margin: 8px;
-	padding: 4px;
-	border-radius: 4px;
-}
-
-#autoc {
-	width: 100%;
-	box-sizing: border-box;
-}
-
-.header {
-	margin: 70px auto;
-	width: 75%;
-	min-height: 200px;
-	border: 1px solid black;
-	background-color: white;
-}
-
-.navigation-bar {
-	margin: 0 auto;
-	width: 100%;
-	min-width: 640px;
-	height: 50px;
-	border-bottom: 1px solid #ccc;
-	position: fixed;
-	z-index: 100000;
-}
-
 .header {
 	font-size: 35px;
 	padding-right: 0px;
@@ -420,4 +365,47 @@ html, body, #map {
 	min-width: 320px;
 }
 
+}
+/*Map Styling*/
+/************************************************************/
+#map { 
+	position: absolute; 
+	top: 20%; 
+	bottom: 0; 
+	width: 50%; 
+	margin-left: 10%;
+}
 
+#inputs,
+#errors,
+#directions {
+    position: absolute;
+    width: 33.3333%;
+    max-width: 300px;
+    min-width: 200px;
+}
+
+#inputs {
+    z-index: 10;
+    top: 30%;
+    left: 10px;
+}
+
+#directions {
+    z-index: 99;
+    background: rgba(0,0,0,.8);
+    top: 20%;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+}
+
+#errors {
+    z-index: 8;
+    opacity: 0;
+    padding: 10px;
+    border-radius: 0 0 3px 3px;
+    background: rgba(0,0,0,.25);
+    top: 90px;
+    left: 10px;
+}

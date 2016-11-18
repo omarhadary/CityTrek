@@ -147,7 +147,7 @@ main {
 	color: white;
 	height: 40px;
 }
-#log-in:hover, #sign-up:hover, #faq:hover, #nav-toggle:hover, #results-page:hover {
+#log-in:hover, #sign-up:hover, #faq:hover, #nav-toggle:hover, #search-button:hover, #results-page:hover {
 	background-color: #ddd;
 	cursor: pointer;
 }

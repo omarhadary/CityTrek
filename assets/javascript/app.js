@@ -32,6 +32,8 @@ $(document).ready(function() {
     var cityName;
     var stateName;
     var buttons;
+    var displayLinkCity;
+    var displayLinkState;
 
     function showCity() {
         $(".buttons").empty();
@@ -47,29 +49,20 @@ $(document).ready(function() {
     }
     // get Weather API results for pre-selected locations and append to page
     function displayWeather() {
-        // on the click function, pass to local storage the class of the button you're clicking on
-        // if location.href=is the destination page,
-        // make an array of the localtion and parseit for the .html page
-        // then getlocalstoarge, run ajax call with those values and display at that page
-        // var uriList = window.location.href.split('/');
-        // var uri = uriList[uriList.length - 1];
-        // IF PLANTS OPEN MODAL
-        // if (uri === 'destinations') {
-        //stuff
-        // }
+
         cityName = $(this).data("city");
         stateName = $(this).data("state");
-        // alert("cityName: " + cityName + "stateName: " + stateName);
+        alert("cityName: " + cityName + "stateName: " + stateName);
         localStorage.setItem("localStorageCityName", cityName);
         localStorage.setItem("localStorageStateName", stateName);
-        var weatherDiv = $("<div>");
+        // var weatherDiv = $("<div>");
         var localStorageCityName = localStorage.getItem("localStorageCityName");
         // alert(localStorageCityName);
         var localStorageStateName = localStorage.getItem("localStorageStateName");
         var queryURL = "http://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + localStorageStateName + "/" + localStorageCityName + ".json";
-        // alert(queryURL);
+        alert(queryURL);
         $(document).ready(function($) {
-            // alert("almost works");
+            alert("almost works");
             $.ajax({
                 url: queryURL,
                 dataType: "jsonp",
@@ -87,6 +80,7 @@ $(document).ready(function() {
                     // var forecast = parsed_json["forecast"]["simpleforecast"]["forecastday"]["date"];
                     // var forecast = parsed_json["forecast"]["txt_forecast"]["forecastday.indexOf[0]"];
                     // prepend the weatherDiv to the page
+
                     $(".weather-city").html(location);
                     $(".weather-time").html("Local Time: " + localTime);
                     $(".weather-icon").html(weatherIcon);
@@ -98,7 +92,7 @@ $(document).ready(function() {
                     $(".weather-humidity").html("Humidity: " + humidity);
                     // weatherDiv.append("...Forecast: " + forecast + "...");
                     // $(".cities").prepend(weatherDiv);
-                    // alert("works");
+                    alert("works");
                 },
                 error: function(error) {
                     alert('error; ' + eval(error));
@@ -108,7 +102,7 @@ $(document).ready(function() {
     }
     // get Weather API results for new locations and append to page
     function displayNewWeather() {
-        var newWeatherDiv = $("<div>");
+        // var newWeatherDiv = $("<div>");
         var queryURL = "http://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + newState + "/" + newCity + ".json";
         $(document).ready(function($) {
             $.ajax({
@@ -166,12 +160,63 @@ $(document).ready(function() {
     })
     // when user input is added to Firebase, append the stored values to the page
     database.ref("Destinations").on("child_added", function(childSnapshot) {
-        $(".added-destination").append("<tr>+<td>" + "<button class='destination-stored-API'>Destination Link</button>" + "<td>" + childSnapshot.val().newCity + "<td>" + childSnapshot.val().newState);
+        displayLinkCity = childSnapshot.val().newCity;
+
+        displayLinkState = childSnapshot.val().newState;
+
+        $(".added-destination").append("<tr>+<td>" + "<button data-city ='"+displayLinkCity+"' data-state='"+displayLinkState+ "' class='destination-stored-API'>Destination Link</button>" + "<td>" + displayLinkCity + "<td>" + displayLinkState);
+        // console.log(data-city)
     });
-    // create on click event handler to display the weather if any of the topic buttons are clicked
+    // create on click event handler to display the weather if any of the pre-selected city images are clicked
     $(document).on('click', ".city-button", displayWeather);
+    // create on click event handler to display the weather if any of the city images on the index page are clicked
+    $(document).on('click', "#slideImages", displayWeather);
+
     // create on click event handler to display weather if the destination link is clicked
-    $(document).on('click', ".destination-stored-API", displayNewWeather);
+    $(document).on('click', ".destination-stored-API", displayLinkWeather);
+
+
+    function displayLinkWeather() {
+        // var newWeatherDiv = $("<div>");
+        cityName = $(this).data("city");
+        stateName = $(this).data("state");
+        var queryURL = "http://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + stateName + "/" + cityName + ".json";
+        // console.log(queryURL);
+        $(document).ready(function($) {
+            $.ajax({
+                url: queryURL,
+                dataType: "jsonp",
+                success: function(parsed_json) {
+                    var location = parsed_json["current_observation"]["display_location"]["full"];
+                    var localTime = parsed_json["current_observation"]["local_time_rfc822"];
+                    var temp = parsed_json["current_observation"]["temperature_string"];
+                    var weather = parsed_json["current_observation"]["weather"];
+                    var precipitation = parsed_json["current_observation"]["precip_today_string"];
+                    var humidity = parsed_json["current_observation"]["relative_humidity"];
+                    var windSpeed = parsed_json["current_observation"]["wind_mph"];
+                    var windDirection = parsed_json["current_observation"]["wind_dir"];
+                    var weatherIcon = $("<img>");
+                    weatherIcon.attr("src", parsed_json["current_observation"]["icon_url"]);
+
+                    $(".weather-city").html(location);
+                    $(".weather-time").html("Local Time: " + localTime);
+                    $(".weather-icon").html(weatherIcon);
+                    $(".weather-condition").html(weather);
+                    $(".weather-temp").html("Temp: " + temp);
+                    $(".weather-precipitation").html("Precipitation: " + precipitation);
+                    $(".weather-wind-speed").html("Wind Speed: " + windSpeed + " mph");
+                    $(".weather-wind-direction").html("Wind Direction: " + windDirection);
+                    $(".weather-humidity").html("Humidity: " + humidity);
+
+                },
+                error: function(error) {
+                    alert('error; ' + eval(error));
+                }
+            });
+        });
+    }
+
+
     // function to navigate to destinations page
     function destinationsPage() {
         // $(".buttons").attr('href','destinations.html');
@@ -243,20 +288,20 @@ $(document).ready(function() {
     })
     // MapBox API code
     // ************************************************************************************
-    L.mapbox.accessToken = 'pk.eyJ1Ijoic2xpY2t0b25lIiwiYSI6ImNpdmxub2c5ZTA1N2MyenF0OWZweXo2Y3MifQ.-NOxV9teamyijL1FWXSMmA';
-    var map = L.mapbox.map('map', 'mapbox.streets', {
-        zoomControl: false
-    }).setView([40, -74.50], 9);
-    // move the attribution control out of the way
-    map.attributionControl.setPosition('bottomleft');
-    // create the initial directions object, from which the layer
-    // and inputs will pull data.
-    var directions = L.mapbox.directions();
-    var directionsLayer = L.mapbox.directions.layer(directions).addTo(map);
-    var directionsInputControl = L.mapbox.directions.inputControl('inputs', directions).addTo(map);
-    var directionsErrorsControl = L.mapbox.directions.errorsControl('errors', directions).addTo(map);
-    var directionsRoutesControl = L.mapbox.directions.routesControl('routes', directions).addTo(map);
-    var directionsInstructionsControl = L.mapbox.directions.instructionsControl('instructions', directions).addTo(map);
+    // L.mapbox.accessToken = 'pk.eyJ1Ijoic2xpY2t0b25lIiwiYSI6ImNpdmxub2c5ZTA1N2MyenF0OWZweXo2Y3MifQ.-NOxV9teamyijL1FWXSMmA';
+    // var map = L.mapbox.map('map', 'mapbox.streets', {
+    //     zoomControl: false
+    // }).setView([40, -74.50], 9);
+    // // move the attribution control out of the way
+    // map.attributionControl.setPosition('bottomleft');
+    // // create the initial directions object, from which the layer
+    // // and inputs will pull data.
+    // var directions = L.mapbox.directions();
+    // var directionsLayer = L.mapbox.directions.layer(directions).addTo(map);
+    // var directionsInputControl = L.mapbox.directions.inputControl('inputs', directions).addTo(map);
+    // var directionsErrorsControl = L.mapbox.directions.errorsControl('errors', directions).addTo(map);
+    // var directionsRoutesControl = L.mapbox.directions.routesControl('routes', directions).addTo(map);
+    // var directionsInstructionsControl = L.mapbox.directions.instructionsControl('instructions', directions).addTo(map);
     // ************************************************************************************
     // Justin's functionality code //
     var faqModal = document.getElementById('faqModal');

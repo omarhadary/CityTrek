@@ -126,7 +126,7 @@ html, body {
 
 }
 
-#home, #log-in, #sign-up, #search-button, #faq, #nav-toggle, #history {
+#home, #log-in, #sign-up, #search-button, #faq, #nav-toggle, #history, #results-page {
 	float: right;
 	line-height: 20px;
 	height: 50px;
@@ -159,7 +159,7 @@ html, body {
 	height: 40px;
 }
 
-#log-in:hover, #sign-up:hover, #faq:hover, #nav-toggle:hover, #home:hover, #history:hover {
+#log-in:hover, #sign-up:hover, #faq:hover, #nav-toggle:hover, #home:hover, #history:hover, #results-page:hover {
 	background-color: #ddd;
 	cursor: pointer;
 }

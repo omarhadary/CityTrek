@@ -1,37 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <meta charset="UTF-8">
-    <head>
-      <title>CityTrek</title>
-      <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    </head>
-
+<head>
+    <meta charset="UTF-8">
+    <title>CityTrek</title>
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" rel="stylesheet">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+</head>
 <body>
-
 <div class="navigation-bar white">
-  <a href="index.html"><img class="logo" src="assets/images/logo.png"></a>
-      <a href="index.html"><div id="home">Home</div></a>
-      <div id="log-in" style="display: none">Log In</div>
-      <div id="sign-up" style="display: none">Sign Up</div>
-      <div id="faq" style="display: none">FAQ</div>
-      <div id="nav-toggle" style="display: none">&#9776;</div>
-
+    <a href="index.html"><img class="logo" src="assets/images/logo.png"></a> <a href="index.html">
+    <div id="home">
+        Home
+    </div></a>
+    <div id="log-in" style="display: none">
+        Log In
+    </div>
+    <div id="sign-up" style="display: none">
+        Sign Up
+    </div>
+    <div id="faq" style="display: none">
+        FAQ
+    </div>
+    <div id="nav-toggle" style="display: none">
+        &#9776;
+    </div>
 </div>
 <div class="login-background">
-<main class="container-space">
-    <img class="modal-logo" src="assets/images/logo.png">
-    <input id="username1" type="text" placeholder="Username">
-    <input id="password1" type="text" placeholder="Password">
-    <button id="logInButton" style="width: 90%">Log in</button>
-    <p>Don't have an account? Sign up <a href="signup.html" style="text-decoration: underline">here!</a></p>
-  </main>
+    <main class="container-space">
+        <img class="modal-logo" src="assets/images/logo.png"> <input id="username1" placeholder="Username" type="text"> <input id="password1" placeholder="Password" type="text"> <button id="logInButton" style="width: 90%">Log in</button>
+        <p>Don't have an account? Sign up <a href="signup.html" style="text-decoration: underline">here!</a></p>
+    </main>
 </div>
-
 <footer class="page-footer grey darken-4">
     <div class="container">
         <div class="row">
@@ -40,83 +44,77 @@
                 <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
             </div>
             <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Follow us!</h5>
-                        <a class="grey-text text-lighten-3" href="#!"><img src="assets/images/fbicon.png" id="icon"></a>
-                        <a class="grey-text text-lighten-3" href="#!"><img src="assets/images/igicon.png" id="icon"></a>
-                        <a class="grey-text text-lighten-3" href="#!"><img src="assets/images/twittericon.png" id="icon"></a>
+                <h5 class="white-text">Follow us!</h5><a class="grey-text text-lighten-3" href="#!"><img id="icon" src="assets/images/fbicon.png"></a> <a class="grey-text text-lighten-3" href="#!"><img id="icon" src="assets/images/igicon.png"></a> <a class="grey-text text-lighten-3" href="#!"><img id="icon" src="assets/images/twittericon.png"></a>
             </div>
-          </div>
-          <div class="footer-copyright">
+        </div>
+        <div class="footer-copyright">
             <div class="container">
-            © 2016 CityTrek
+                © 2016 CityTrek
             </div>
-          </div>
-        </footer>
-
-
- <div id="loginModal" class="modal">
-  <div class="modal-content">
-    <span class="close">×</span>
-    <img class="modal-logo" src="assets/images/logo.png">
-      <input id="username" type="text" placeholder="Username">
-       <div class="input-name">
+        </div>
     </div>
-    <div class="input-password">
-      <input id="password" type="text" placeholder="Password">
+</footer>
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+        <span class="close">×</span> <img class="modal-logo" src="assets/images/logo.png"> <input id="username" placeholder="Username" type="text">
+        <div class="input-name"></div>
+        <div class="input-password">
+            <input id="password" placeholder="Password" type="text">
+        </div><button id="logInButton">Log In</button>
+        <p>Don't have an account? Sign up <a href="signup.html" style="text-decoration: underline">here</a>!</p>
     </div>
-    <button id="logInButton">Log In</button>
-   <p>Don't have an account? Sign up <a href="signup.html" style="text-decoration: underline">here</a>!</p>
-  </div>
-
 </div>
-
- <div id="signupModal" class="modal">
-  <div class="signup-content">
-    <span class="close">×</span>
-    <img class="modal-logo" src="assets/images/logo.png">
-    <input id="username" type="text" placeholder="Username">
-    <input id="password" type="text" placeholder="Password">
-    <input id="e-mail" type="text" placeholder="E-Mail">
-    <button id="signUpButton">Sign Up</button>
-   <p>Already have an account? Log-in <a href="login.html" style="text-decoration: underline">here</a>!</p>
-  </div>
+<div class="modal" id="signupModal">
+    <div class="signup-content">
+        <span class="close">×</span> <img class="modal-logo" src="assets/images/logo.png"> <input id="username" placeholder="Username" type="text"> <input id="password" placeholder="Password" type="text"> <input id="e-mail" placeholder="E-Mail" type="text"> <button id="signUpButton">Sign Up</button>
+        <p>Already have an account? Log-in <a href="login.html" style="text-decoration: underline">here</a>!</p>
+    </div>
 </div>
-
-
- <div id="faqModal" class="sideModal">
-  <div class="faq-content">
-    <img class="faq-logo" src="assets/images/logo.png">
-    <span class="close">×</span>
-      <ul>
-        <li>asdfsadf</li>
-          <p>asdsaf</p>
-        <li>asdfsadf</li>
-          <p>asdsaf</p>
-        <li>asdfsadf</li>
-          <p>asdsaf</p>
-        <li>asdfsadf</li>
-          <p>asdsaf</p>
-        <li>asdfsadf</li>
-          <p>asdsaf</p>
-      </ul>
-  </div>
-
+<div class="sideModal" id="faqModal">
+    <div class="faq-content">
+        <img class="faq-logo" src="assets/images/logo.png"> <span class="close">×</span>
+        <ul>
+            <li>asdfsadf</li>
+            <li style="list-style: none; display: inline">
+                <p>asdsaf</p>
+            </li>
+            <li>asdfsadf</li>
+            <li style="list-style: none; display: inline">
+                <p>asdsaf</p>
+            </li>
+            <li>asdfsadf</li>
+            <li style="list-style: none; display: inline">
+                <p>asdsaf</p>
+            </li>
+            <li>asdfsadf</li>
+            <li style="list-style: none; display: inline">
+                <p>asdsaf</p>
+            </li>
+            <li>asdfsadf</li>
+            <li style="list-style: none; display: inline">
+                <p>asdsaf</p>
+            </li>
+        </ul>
+    </div>
 </div>
-
- <div id="navModal" class="topModal">
-  <div class="nav-content">
-    <img class="nav-logo" src="assets/images/logo.png">
-    <div id="toggle">Log in</div>
-    <div id="toggle">Sign Up</div>
-    <div id="toggle">FAQ</div>
-    <div id="close">Close</div>
-
-  </div>
-
+<div class="topModal" id="navModal">
+    <div class="nav-content">
+        <img class="nav-logo" src="assets/images/logo.png">
+        <div id="toggle">
+            Log in
+        </div>
+        <div id="toggle">
+            Sign Up
+        </div>
+        <div id="toggle">
+            FAQ
+        </div>
+        <div id="close">
+            Close
+        </div>
+    </div>
 </div>
-
-
-<script src="assets/javascript/app.js"></script>
+<script src="assets/javascript/app.js">
+</script>
 </body>
-
 </html>

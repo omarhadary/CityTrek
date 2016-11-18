@@ -20,9 +20,10 @@ html, body {
 .background {
 	width: 80%;
 	height: 100% !important;
-	min-height: 968px !important;
+	min-height: 1100px !important;
 	margin: 0 auto 0;
 	background-color: white;
+	text-align: center !important;
 }
 
 .login-background, .signup-background {
@@ -53,7 +54,7 @@ html, body {
 }
 
 .page-footer {
-	margin-top: 0 !important;
+	margin-top: -30px !important;
 	bottom: 0 !important;
 }
 
@@ -86,11 +87,23 @@ html, body {
 	position: fixed;
 	z-index: 100000;
 }
+
 .logo {
 	width: 144px;
 	height: 30px;
 	margin-left: 10px;
 	margin-top: 10px;
+}
+
+.logoClass {
+	width: 40%;
+	margin: 30px auto 10px;
+	display: none;
+}
+
+#table-heading {
+	font-size: 25px !important;
+	font-weight: bold !important;
 }
 
 .modal-logo {
@@ -114,13 +127,17 @@ html, body {
 
 
 .placeholder {
-	margin: -80px auto !important;
+	margin: 0 auto !important;
 	text-align: center;
 	width: 85%;
 
 }
 
-#home, #log-in, #sign-up, #search-button, #results-page, #faq, #nav-toggle, #results-page {
+#margin {
+	margin-top: 200px !important;
+}
+
+#home, #log-in, #sign-up, #search-button, #results-page, #faq, #nav-toggle, #results-page , #history {
 	float: right;
 	line-height: 20px;
 	height: 50px;
@@ -153,7 +170,7 @@ html, body {
 	height: 40px;
 }
 
-#log-in:hover, #sign-up:hover, #faq:hover, #nav-toggle:hover, #results-page:hover {
+#log-in:hover, #sign-up:hover, #faq:hover, #nav-toggle:hover, #results-page:hover, #history:hover {
 	background-color: #ddd;
 	cursor: pointer;
 }
@@ -192,7 +209,7 @@ html, body {
     padding: 30px;
 }
 
-.sideModal {
+.sideModal, .sideHistoryModal {
     display: none; 
     position: fixed; 
     z-index: 10;
@@ -216,7 +233,7 @@ html, body {
     overflow: visible !important;
 }
 
-.faq-content {
+.faq-content, .history-content {
     background-color: #fff;
     float: right;
     right: 0;
@@ -292,7 +309,7 @@ a {
 }
 
 #slideshow { 
-    margin: -60px auto; 
+    margin: -60px auto 0px !important; 
     position: relative; 
     width: 95%;
     text-align: center;
@@ -304,6 +321,7 @@ a {
 
 #slideImages {
 	width: 100%;
+
 }
 
 #icon {
@@ -367,4 +385,43 @@ a {
 	min-width: 320px;
 }
 
+}
+
+
+#map { position:absolute; top: 20; bottom:0; width:45%; height: 80%; }
+
+#inputs,
+#errors,
+#directions {
+    position: absolute;
+    top: 20;
+    left: 65%;
+    width: 33.3333%;
+    max-width: 300px;
+    min-width: 200px;
+}
+
+#inputs {
+    z-index: 10;
+    top: 10px;
+    left: 10px;
+}
+
+#directions {
+    z-index: 99;
+    background: rgba(0,0,0,.8);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+}
+
+#errors {
+    z-index: 8;
+    opacity: 0;
+    padding: 10px;
+    border-radius: 0 0 3px 3px;
+    background: rgba(0,0,0,.25);
+    top: 90px;
+    left: 10px;
 }

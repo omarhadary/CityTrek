@@ -1,4 +1,3 @@
-// Omar's backend code //
 $(document).ready(function() {
     // Initialize Firebase
     var config = {
@@ -194,13 +193,15 @@ $("#faq").on("click", function(){
     $("#signupModal").css("display", "none");
     $("#loginModal").css("display", "none");
     $(".navigation-bar").fadeOut(0200);
-    $("html").css("width", "70%")
+    $("html").css("width", "70%");
+    $(".logoClass").css("display", "block");
 })
 
 faqSpan.onclick = function() {
     $("#faqModal").css("display", "none")
     $(".navigation-bar").fadeIn();
-    $("html").css("width", "100%")
+    $("html").css("width", "100%");
+    $(".logoClass").css("display", "none");
 }
 
 $(window).on("click", function(event) {
@@ -208,6 +209,7 @@ $(window).on("click", function(event) {
         faqModal.style.display = "none";
         $(".navigation-bar").fadeIn();
         $("html").css("width", "100%");
+        $(".logoClass").css("display", "none");
     }
 });
 
@@ -298,3 +300,56 @@ setInterval(function() {
     .end()
     .appendTo('#slideshow');
 },  2500);
+
+var historyModal = document.getElementById('historyModal');
+
+var historySpan = document.getElementsByClassName("close")[3];
+
+$("#history").on("click", function(){
+    $("#historyModal").css("display", "block");
+    $("#signupModal").css("display", "none");
+    $("#loginModal").css("display", "none");
+    $(".navigation-bar").fadeOut(0200);
+    $("html").css("width", "70%");
+    $(".logoClass").css("display", "block");
+    $("#directions").css("left", "40%");
+});
+
+historySpan.onclick = function() {
+    $("#historyModal").css("display", "none");
+    $(".navigation-bar").fadeIn();
+    $("html").css("width", "100%")
+    $(".logoClass").css("display", "none");
+    $("#directions").css("left", "65%");
+};
+
+
+// ----------------------------------------//
+
+L.mapbox.accessToken = 'pk.eyJ1Ijoic2xpY2t0b25lIiwiYSI6ImNpdmxub2c5ZTA1N2MyenF0OWZweXo2Y3MifQ.-NOxV9teamyijL1FWXSMmA';
+
+var map = L.mapbox.map('map', 'mapbox.streets', {
+    zoomControl: false
+}).setView([40, -74.50], 9);
+
+// move the attribution control out of the way
+map.attributionControl.setPosition('bottomleft');
+
+// create the initial directions object, from which the layer
+// and inputs will pull data.
+var directions = L.mapbox.directions();
+
+var directionsLayer = L.mapbox.directions.layer(directions)
+    .addTo(map);
+
+var directionsInputControl = L.mapbox.directions.inputControl('inputs', directions)
+    .addTo(map);
+
+var directionsErrorsControl = L.mapbox.directions.errorsControl('errors', directions)
+    .addTo(map);
+
+var directionsRoutesControl = L.mapbox.directions.routesControl('routes', directions)
+    .addTo(map);
+
+var directionsInstructionsControl = L.mapbox.directions.instructionsControl('instructions', directions)
+    .addTo(map);

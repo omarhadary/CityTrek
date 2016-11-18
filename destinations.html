@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
     <meta charset="UTF-8">
-    <head>
     <title>CityTrek</title>
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js">
@@ -11,58 +11,79 @@
     <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js">
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" rel="stylesheet">
+
+    <script src='https://api.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.4.0/mapbox.directions.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.4.0/mapbox.directions.css' type='text/css' />
+
+
     <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'>
     </script>
     <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet'>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 </head>
-
 <body>
 <div class="navigation-bar white">
-      <a href="index.html"><img class="logo" src="assets/images/logo.png"></file:///C:/Users/Justin/Project-1/assets/images/logo.pnga>
-      <div id="log-in">Log In</div>
-      <div id="sign-up">Sign Up</div>
-      <a href="destinations.html">
-      <div id="results-page">
-      Destinations
-      </div>
-      </a>
-      <div id="faq">FAQ</div>
-      <div id="nav-toggle">&#9776;</div>
+    <a href="index.html"><img class="logo" src="assets/images/logo.png"></a>
+    <div id="log-in">
+        Log In
+    </div>
+    <div id="sign-up">
+        Sign Up
+    </div>
+    <div id="history">
+        History
+    </div>
+    <div id="nav-toggle">
+        &#9776;
+    </div>
 </div>
-
 <header></header>
-
 <div class="background">
-<main class="placeholder">
-<div class="destination-space">
-    <div class="row">
-        <div class="row buttons"></div>
-    </div>
+<img src="assets/images/logo.png" class="logoClass">
+    <main class="placeholder">
+        <div class="row" id="margin">
+
+
+
+<div id='map'></div>
+<div id='inputs'></div>
+<div id='errors'></div>
+<div id='directions'>
+  <div id='routes'></div>
+  <div id='instructions'></div>
 </div>
-    <div class="row">
-        <div class="col-sm-8 cities"></div>
-    </div>
-    <div class="row">
-        <div class="col-sm-8 new-cities"></div>
-    </div>
 
-    <div class="panel panel-default">
-        <div class="panel-heading" id="table-heading">
-            Search History
+
+
         </div>
-        <table class="table added-destination">
-            <tr>
-                <th>Destination</th>
-                <th>City</th>
-                <th>State</th>
-            </tr>
-        </table>
-    </div>
+        <div class="row">
+            <div class="col s5 weather-API">
+                <div class="row">
+                    <div class="weather-city"></div>
+                    <div class="weather-time"></div>
+                </div>
+                <div class="row">
+                    <div class="col s4">
+                        <div class="weather-icon"></div>
+                        <div class="weather-condition"></div>
+                    </div>
+                    <div class="col s8">
+                        <div class="weather-temp"></div>
+                        <div class="weather-precipitation"></div>
+                        <div class="weather-wind-speed"></div>
+                        <div class="weather-wind-direction"></div>
+                        <div class="weather-humidity"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s7 map-API"></div>
+        </div>
+        <div class="panel panel-default">
 
+
+        </div>
     </main>
 </div>
-
 
 <footer class="page-footer grey darken-4">
     <div class="container">
@@ -86,34 +107,41 @@
         </footer>
 
 
-<div id="loginModal" class="modal">
-  <div class="modal-content">
-    <span class="close">×</span>
-        <img class="modal-logo" src="assets/images/logo.png">
-        <input id="username" type="text" placeholder="Username">
-        <input id="password" type="text" placeholder="Password">
-        <button id="logInButton">Log In</button>
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+        <span class="close">×</span> <img class="modal-logo" src="assets/images/logo.png"> <input autocomplete="on" id="username" placeholder="Username" type="text"> <input id="password" placeholder="Password" type="text"> <button id="logInButton">Log In</button>
         <p>Don't have an account? Sign up <a href="signup.html" style="text-decoration: underline">here</a>!</p>
-  </div>
-
+    </div>
+</div>
+<div class="modal" id="signupModal">
+    <div class="signup-content">
+        <span class="close">×</span> <img class="modal-logo" src="assets/images/logo.png"> <input autocomplete="on" id="username1" placeholder="Username" type="text"> <input id="password1" placeholder="Password" type="text"> <input autocomplete="on" id="e-mail1" placeholder="E-Mail" type="text"><span class="incorrect-email-alert"></span> <button id="signUpButton">Sign Up</button>
+        <p>Already have an account? Log-in <a href="login.html" style="text-decoration: underline">here</a>!</p>
+    </div>
 </div>
 
- <div id="signupModal" class="modal">
-  <div class="signup-content">
-    <span class="close">×</span>
-    <img class="modal-logo" src="assets/images/logo.png">
-    <input id="username1" type="text" placeholder="Username">
-    <input id="password1" type="text" placeholder="Password">
-    <input id="e-mail1" type="text" placeholder="E-Mail">
-    <button id="signUpButton">Sign Up</button>
-    <p>Already have an account? Log-in <a href="login.html" style="text-decoration: underline">here</a>!</p>
-  </div>
+<div class="topModal" id="navModal">
+    <div class="nav-content">
+        <img class="nav-logo" src="assets/images/logo.png"> <a href="login.html">
+        <div id="toggle">
+            Log in
+        </div></a> <a href="signup.html">
+        <div id="toggle">
+            Sign Up
+        </div></a>
+        <div id="toggle">
+            FAQ
+        </div>
+        <div id="close">
+            Close
+        </div>
+    </div>
 </div>
 
  <div id="faqModal" class="sideModal">
   <div class="faq-content">
-    <img class="faq-logo" src="assets/images/logo.png">
     <span class="close">×</span>
+    <img class="faq-logo" src="assets/images/logo.png">
       <ul>
         <li>asdfsadf</li>
           <p>asdsaf</p>
@@ -127,21 +155,27 @@
           <p>asdsaf</p>
       </ul>
   </div>
-
 </div>
 
- <div id="navModal" class="topModal">
-  <div class="nav-content">
-    <img class="nav-logo" src="assets/images/logo.png">
-    <a href="login.html"><div id="toggle">Log in</div></a>
-    <a href="signup.html"><div id="toggle">Sign Up</div></a>
-    <div id="toggle">FAQ</div>
-    <div id="close">Close</div>
+<div class="sideHistoryModal" id="historyModal">
+    <div class="history-content">
+        <span class="close">×</span>
+        <div class="panel panel-default">
+            <!--..................can we put the stored search histroy in the FAQ siidebar???????-->
+            <div class="panel-heading" id="table-heading">
+                Search History
+            </div>
+            <table class="table added-destination">
+                <tr>
+                    <th id='destination-link'>Destination</th>
+                    <th>City</th>
+                    <th>State</th>
+                </tr>
+            </table>
+        </div>
 
-  </div>
+    </div>
 </div>
-
-
 <script src="assets/javascript/app.js">
 </script>
 </body>

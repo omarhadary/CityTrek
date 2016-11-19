@@ -24,7 +24,7 @@ $(document).ready(function() {
 
         cityName = $(this).data("city");
         stateName = $(this).data("state");
-        alert("cityName: " + cityName + "stateName: " + stateName);
+        // alert("cityName: " + cityName + "stateName: " + stateName);
         localStorage.setItem("localStorageCityName", cityName);
         localStorage.setItem("localStorageStateName", stateName);
 
@@ -32,9 +32,9 @@ $(document).ready(function() {
 
         var localStorageStateName = localStorage.getItem("localStorageStateName");
         var queryURL = "https://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + localStorageStateName + "/" + localStorageCityName + ".json";
-        alert(queryURL);
+        // alert(queryURL);
         $(document).ready(function($) {
-            alert("almost works");
+            // alert("almost works");
             $.ajax({
                 url: queryURL,
                 dataType: "jsonp",
@@ -61,7 +61,7 @@ $(document).ready(function() {
                     $(".weather-wind-direction").html("Wind Direction: " + windDirection);
                     $(".weather-humidity").html("Humidity: " + humidity);
 
-                    alert("works");
+                    // alert("works");
                 },
                 error: function(error) {
                     alert('error; ' + eval(error));

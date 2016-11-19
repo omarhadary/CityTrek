@@ -7,103 +7,34 @@ $(document).ready(function() {
         storageBucket: "project-1-e72e2.appspot.com",
         messagingSenderId: "1084434872249"
     };
-    
+
     firebase.initializeApp(config);
     var database = firebase.database();
-    var locations = [{
-        city: "Los Angeles",
-        state: "CA",
-        image: "assets/images/Los Angeles.png"
-    }, {
-        city: "Denver",
-        state: "CO",
-        image: "assets/images/Denver.png"
-    }, {
-        city: "Atlanta",
-        state: "GA",
-        image: "assets/images/Atlanta.png"
-    }, {
-        city: "Austin",
-        state: "TX",
-        image: "assets/images/Austin.png"
-    }, {
-        city: "Seattle",
-        state: "WA",
-        image: "assets/images/Seattle.png"
-    }];
+
     var newCity;
     var newState;
     var cityName;
     var stateName;
-    var buttons;
     var displayLinkCity;
     var displayLinkState;
 
-     // function showCity() {
-      //  $(".buttons").empty();
-        //for (var i = 0; i < locations.length; i++) {
-         //   var buttons = $("<img>");
-         //   buttons.attr("src", locations[i].image)
-         //   buttons.attr("data-city", locations[i].city);
-         //   buttons.attr("data-state", locations[i].state);
-
-          //  buttons.addClass("city-button");
-          //  buttons.html(locations[i].city + ", " + locations[i].state);
-          //  $(".buttons").append(buttons);
-       // }
-  //  }
     // get Weather API results for pre-selected locations and append to page
-    function displayWeather() {
 
-        var weatherDiv = $("<div>");
-        var cityName = $(this).data("city");
-        var stateName = $(this).data("state");
-        var queryURL = "http://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + stateName + "/" + cityName + ".json";
-        $(document).ready(function($) {
-            $.ajax({
-                url: queryURL,
-                dataType: "jsonp",
-                success: function(parsed_json) {
-                    var location = parsed_json["current_observation"]["display_location"]["full"];
-                    var weather = parsed_json["current_observation"]["temp_f"];
-                    var humidity = parsed_json["current_observation"]["relative_humidity"];
-                    var windSpeed = parsed_json["current_observation"]["wind_mph"];
-                    var windDirection = parsed_json["current_observation"]["wind_dir"];
-                    var weatherIcon = $("<img>");
-                    weatherIcon.attr("src", parsed_json["current_observation"]["icon_url"]);
-                    var temp = parsed_json["current_observation"]["weather"];
-                    // var forecast = parsed_json["forecast"]["simpleforecast"]["forecastday"]["date"];
-                    // var forecast = parsed_json["forecast"]["txt_forecast"]["forecastday.indexOf[0]"];
-                    // prepend the weatherDiv to the page
-                    weatherDiv.append("Location: " + location);
-                    weatherDiv.append("...Temperature: " + weather + "\xB0F...");
-                    weatherDiv.append("...Humidity: " + humidity + "...");
-                    weatherDiv.append("...Wind Speed: " + windSpeed + " mph...");
-                    weatherDiv.append("...Wind Direction: " + windDirection + "...");
-                    // weatherDiv.append("...Forecast: " + forecast + "...");
-                    weatherDiv.append(weatherIcon);
-                    weatherDiv.append("..." + temp);
-                    $(".cities").prepend(weatherDiv);
-                }
-            });
-        });
-    }
-    // get Weather API results for new locations and append to page
-      function displayWeather() {
+    function displayWeather() {
 
         cityName = $(this).data("city");
         stateName = $(this).data("state");
-        // alert("cityName: " + cityName + "stateName: " + stateName);
+        alert("cityName: " + cityName + "stateName: " + stateName);
         localStorage.setItem("localStorageCityName", cityName);
         localStorage.setItem("localStorageStateName", stateName);
-        // var weatherDiv = $("<div>");
+
         var localStorageCityName = localStorage.getItem("localStorageCityName");
-        // alert(localStorageCityName);
+
         var localStorageStateName = localStorage.getItem("localStorageStateName");
-        var queryURL = "http://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + localStorageStateName + "/" + localStorageCityName + ".json";
-        // alert(queryURL);
+        var queryURL = "https://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + localStorageStateName + "/" + localStorageCityName + ".json";
+        alert(queryURL);
         $(document).ready(function($) {
-            // alert("almost works");
+            alert("almost works");
             $.ajax({
                 url: queryURL,
                 dataType: "jsonp",
@@ -118,9 +49,7 @@ $(document).ready(function() {
                     var windDirection = parsed_json["current_observation"]["wind_dir"];
                     var weatherIcon = $("<img>");
                     weatherIcon.attr("src", parsed_json["current_observation"]["icon_url"]);
-                    // var forecast = parsed_json["forecast"]["simpleforecast"]["forecastday"]["date"];
-                    // var forecast = parsed_json["forecast"]["txt_forecast"]["forecastday.indexOf[0]"];
-                    // prepend the weatherDiv to the page
+
 
                     $(".weather-city").html(location);
                     $(".weather-time").html("Local Time: " + localTime);
@@ -131,9 +60,8 @@ $(document).ready(function() {
                     $(".weather-wind-speed").html("Wind Speed: " + windSpeed + " mph");
                     $(".weather-wind-direction").html("Wind Direction: " + windDirection);
                     $(".weather-humidity").html("Humidity: " + humidity);
-                    // weatherDiv.append("...Forecast: " + forecast + "...");
-                    // $(".cities").prepend(weatherDiv);
-                    // alert("works");
+
+                    alert("works");
                 },
                 error: function(error) {
                     alert('error; ' + eval(error));
@@ -143,8 +71,8 @@ $(document).ready(function() {
     }
     // get Weather API results for new locations and append to page
     function displayNewWeather() {
-        // var newWeatherDiv = $("<div>");
-        var queryURL = "http://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + newState + "/" + newCity + ".json";
+
+        var queryURL = "https://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + newState + "/" + newCity + ".json";
         $(document).ready(function($) {
             $.ajax({
                 url: queryURL,
@@ -160,9 +88,7 @@ $(document).ready(function() {
                     var windDirection = parsed_json["current_observation"]["wind_dir"];
                     var weatherIcon = $("<img>");
                     weatherIcon.attr("src", parsed_json["current_observation"]["icon_url"]);
-                    // var forecast = parsed_json["forecast"]["simpleforecast"]["forecastday"]["date"];
-                    // var forecast = parsed_json["forecast"]["txt_forecast"]["forecastday.indexOf[0]"];
-                    // prepend the weatherDiv to the page
+
                     $(".weather-city").html(location);
                     $(".weather-time").html("Local Time: " + localTime);
                     $(".weather-icon").html(weatherIcon);
@@ -172,8 +98,7 @@ $(document).ready(function() {
                     $(".weather-wind-speed").html("Wind Speed: " + windSpeed + " mph");
                     $(".weather-wind-direction").html("Wind Direction: " + windDirection);
                     $(".weather-humidity").html("Humidity: " + humidity);
-                    // weatherDiv.append("...Forecast: " + forecast + "...");
-                    // $(".cities").prepend(newWeatherDiv);
+
                 },
                 error: function(error) {
                     alert('error; ' + eval(error));
@@ -206,10 +131,9 @@ $(document).ready(function() {
         displayLinkState = childSnapshot.val().newState;
 
         $(".added-destination").append("<tr>+<td>" + "<button data-city ='"+displayLinkCity+"' data-state='"+displayLinkState+ "' class='destination-stored-API'>Weather</button>" + "<td>" + displayLinkCity + "<td>" + displayLinkState);
-        // console.log(data-city)
+
     });
-    // create on click event handler to display the weather if any of the pre-selected city images are clicked
-    $(document).on('click', ".city-button", displayWeather);
+
     // create on click event handler to display the weather if any of the city images on the index page are clicked
     $(document).on('click', "#slideImages", displayWeather);
 
@@ -218,11 +142,11 @@ $(document).ready(function() {
 
 
     function displayLinkWeather() {
-        // var newWeatherDiv = $("<div>");
+
         cityName = $(this).data("city");
         stateName = $(this).data("state");
-        var queryURL = "http://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + stateName + "/" + cityName + ".json";
-        // console.log(queryURL);
+        var queryURL = "https://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + stateName + "/" + cityName + ".json";
+
         $(document).ready(function($) {
             $.ajax({
                 url: queryURL,
@@ -258,44 +182,7 @@ $(document).ready(function() {
     }
 
 
-    // function to navigate to destinations page
-    function destinationsPage() {
-        // $(".buttons").attr('href','destinations.html');
-        // buttons.attr("href", "destinations.html");
-        // for (var j = 0; j < locations.length; j++) {
-        //     cityName = locations[j].city;
-        // alert(cityName);
-        // stateName = locations[j].state;
-        //     cityName = $(this).data("city");
-        // stateName = $(this).data("state");
-        // alert("cityName: " + cityName + "stateName: " + stateName);
-        //     localStorage.setItem("localStorageCityName", cityName);
-        //     localStorage.setItem("localStorageStateName", stateName);
-        // }
-        window.location.href = "destinations.html";
-        displayWeather();
-    }
-    // run function to show the topics buttons
-    //showCity();
-
-// Get the search modal
-var searchModal = document.getElementById("search-modal");
-var searchButton = document.getElementById("search-button");
-var searchSpan = document.getElementsByClassName("search-close")[0];
-searchButton.onclick = function() {
-    searchModal.style.display = "block";
-}
-searchSpan.onclick = function() {
-    searchModal.style.display = "none";
-}
-window.onclick = function(event) {
-    if (event.target == searchModal) {
-        searchModal.style.display = "none";
-    }
-}
-});
-
- // create on click event handler to take login username and password and store in firebase
+    // create on click event handler to take login username and password and store in firebase
     $("#logInButton").on("click", function() {
         var loginUserName = $("#username").val().trim();
         var loginPassword = $("#password").val().trim();
@@ -319,7 +206,7 @@ window.onclick = function(event) {
         var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
         if(signUpEmail.match(mailformat)) {
-            // alert("right email format");
+
             database.ref("Sign Up").push({
                 signUpUserName: signUpUserName,
                 signUpPassword: signUpPassword,
@@ -334,10 +221,9 @@ window.onclick = function(event) {
             return false;
         } else {
             $(".incorrect-email-alert").html("Enter a valid email.");
-            // alert("wrong email format");
+
         }
     })
-
 
 // Justin's functionality code //
 
@@ -425,7 +311,8 @@ var span = document.getElementsByClassName("close")[3];
 
 $("#nav-toggle").on("click", function(){
     $("#navModal").css("display", "block");
-    $(".header").css("margin-top", "270px");
+    $(".header").css("margin-top", "320px");
+    $("html").css("margin-top", "300px");
     $(".container-space").css("margin-top", "270px");
     $(".navigation-bar").fadeOut(0200);
 })
@@ -435,6 +322,7 @@ $(window).on("click", function(event) {
         navModal.style.display = "none";
         $(".navigation-bar").fadeIn();
         $(".header").css("margin-top", "70px");
+        $("html").css("margin-top", "0px");
         $(".container-space").css("margin-top", "40px");
     }
 });
@@ -445,6 +333,7 @@ $("#close").on("click", function() {
     $(".navigation-bar").fadeIn();
     $(".header").css("margin-top", "70px");
     $(".container-space").css("margin-top", "40px");
+    $("html").css("margin-top", "0px");
 });
 
 
@@ -523,3 +412,5 @@ var directionsRoutesControl = L.mapbox.directions.routesControl('routes', direct
 
 var directionsInstructionsControl = L.mapbox.directions.instructionsControl('instructions', directions)
     .addTo(map);
+
+});

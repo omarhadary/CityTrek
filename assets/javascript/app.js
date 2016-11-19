@@ -58,7 +58,7 @@ $(document).ready(function() {
         var weatherDiv = $("<div>");
         var cityName = $(this).data("city");
         var stateName = $(this).data("state");
-        var queryURL = "http://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + stateName + "/" + cityName + ".json";
+        var queryURL = "https://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + stateName + "/" + cityName + ".json";
         $(document).ready(function($) {
             $.ajax({
                 url: queryURL,
@@ -100,7 +100,7 @@ $(document).ready(function() {
         var localStorageCityName = localStorage.getItem("localStorageCityName");
         // alert(localStorageCityName);
         var localStorageStateName = localStorage.getItem("localStorageStateName");
-        var queryURL = "http://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + localStorageStateName + "/" + localStorageCityName + ".json";
+        var queryURL = "https://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + localStorageStateName + "/" + localStorageCityName + ".json";
         alert(queryURL);
         $(document).ready(function($) {
             alert("almost works");
@@ -144,7 +144,7 @@ $(document).ready(function() {
     // get Weather API results for new locations and append to page
     function displayNewWeather() {
         // var newWeatherDiv = $("<div>");
-        var queryURL = "http://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + newState + "/" + newCity + ".json";
+        var queryURL = "https://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + newState + "/" + newCity + ".json";
         $(document).ready(function($) {
             $.ajax({
                 url: queryURL,

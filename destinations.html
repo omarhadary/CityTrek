@@ -11,6 +11,11 @@
     <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js">
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" rel="stylesheet">
+
+    <script src='https://api.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.4.0/mapbox.directions.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.4.0/mapbox.directions.css' type='text/css' />
+
+
     <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'>
     </script>
     <script src='https://api.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.4.0/mapbox.directions.js'></script>
@@ -26,25 +31,31 @@
     </div>
     <div id="sign-up">
         Sign Up
-    </div><a href="destinations.html">
-    <div id="results-page">
-        Destinations
+    </div>
+    <div id="history">
+        History
+    </div>
+     <a href="index.html"><div id="home">
+    Home
     </div></a>
-    <div id="search-button">
-        Search
-    </div>
-    <div id="faq">
-        FAQ
-    </div>
     <div id="nav-toggle">
         &#9776;
     </div>
 </div>
 <header></header>
 <div class="background">
+<img src="assets/images/logo.png" class="logoClass">
     <main class="placeholder">
-        <div class="row">
-            <div class="row buttons"></div>
+        <div class="row" id="margin">
+
+<div id='map'></div>
+<div id='inputs'></div>
+<div id='errors'></div>
+<div id='directions'>
+  <div id='routes'></div>
+  <div id='instructions'></div>
+</div>
+
         </div>
         <div class="row">
             <div class="col s5 weather-API">
@@ -75,6 +86,7 @@
                   <div id='instructions'></div>
                 </div>
         </div>
+<<<<<<< HEAD
         <!-- <div class="panel panel-default">
             <div class="panel-heading" id="table-heading">
                 Search History
@@ -87,10 +99,17 @@
                 </tr>
             </table>
         </div> -->
+=======
+        <div class="panel panel-default">
+
+
+        </div>
+>>>>>>> 7ce0941c7249596a02b48eefb79db700b6677402
     </main>
 
 
 </div>
+
 <footer class="page-footer grey darken-4">
     <div class="container">
         <div class="row">
@@ -99,24 +118,20 @@
                 <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
             </div>
             <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                    <li>
-                        <a class="grey-text text-lighten-3" href="#!">Link 1</a>
-                    </li>
-                    <li>
-                        <a class="grey-text text-lighten-3" href="#!">Link 2</a>
-                    </li>
-                </ul>
+                <h5 class="white-text">Follow us!</h5>
+                        <a class="grey-text text-lighten-3" href="#!"><img src="assets/images/fbicon.png" id="icon"></a>
+                        <a class="grey-text text-lighten-3" href="#!"><img src="assets/images/igicon.png" id="icon"></a>
+                        <a class="grey-text text-lighten-3" href="#!"><img src="assets/images/twittericon.png" id="icon"></a>
             </div>
-        </div>
-        <div class="footer-copyright">
+          </div>
+          <div class="footer-copyright">
             <div class="container">
-                © 2016 CityTrek
+            © 2016 CityTrek
             </div>
-        </div>
-    </div>
-</footer>
+          </div>
+        </footer>
+
+
 <div class="modal" id="loginModal">
     <div class="modal-content">
         <span class="close">×</span> <img class="modal-logo" src="assets/images/logo.png"> <input autocomplete="on" id="username" placeholder="Username" type="text"> <input id="password" placeholder="Password" type="text"> <button id="logInButton">Log In</button>
@@ -129,46 +144,7 @@
         <p>Already have an account? Log-in <a href="login.html" style="text-decoration: underline">here</a>!</p>
     </div>
 </div>
-<div class="sideModal" id="faqModal">
-    <div class="faq-content">
-        <img class="faq-logo" src="assets/images/logo.png"> <span class="close">×</span>
-        <div class="panel panel-default">
-            <!--..................can we put the stored search histroy in the FAQ siidebar???????-->
-            <div class="panel-heading" id="table-heading">
-                Search History
-            </div>
-            <table class="table added-destination">
-                <tr>
-                    <th id='destination-link'>Destination</th>
-                    <th>City</th>
-                    <th>State</th>
-                </tr>
-            </table>
-        </div><!--............................................-->
-        <!--<ul>-->
-        <!--<li>asdfsadf</li>-->
-        <!--<li style="list-style: none; display: inline">-->
-        <!--<p>asdsaf</p>-->
-        <!--</li>-->
-        <!--<li>asdfsadf</li>-->
-        <!--<li style="list-style: none; display: inline">-->
-        <!--<p>asdsaf</p>-->
-        <!--</li>-->
-        <!--<li>asdfsadf</li>-->
-        <!--<li style="list-style: none; display: inline">-->
-        <!--<p>asdsaf</p>-->
-        <!--</li>-->
-        <!--<li>asdfsadf</li>-->
-        <!--<li style="list-style: none; display: inline">-->
-        <!--<p>asdsaf</p>-->
-        <!--</li>-->
-        <!--<li>asdfsadf</li>-->
-        <!--<li style="list-style: none; display: inline">-->
-        <!--<p>asdsaf</p>-->
-        <!--</li>-->
-        <!--</ul>-->
-    </div>
-</div>
+
 <div class="topModal" id="navModal">
     <div class="nav-content">
         <img class="nav-logo" src="assets/images/logo.png"> <a href="login.html">
@@ -184,11 +160,46 @@
         <div id="close">
             Close
         </div>
+
     </div>
 </div>
-<div class="modal" id="search-modal">
-    <div class="modal-content">
-        <span class="search-close">×</span> <input autocomplete="on" id="city-input" placeholder="City" type="text"> <input autocomplete="on" id="state-input" maxlength="2" placeholder="State Abbreviation" type="text"> <button id="add-user-input">Search</button>
+
+ <div id="faqModal" class="sideModal">
+  <div class="faq-content">
+    <span class="close">×</span>
+    <img class="faq-logo" src="assets/images/logo.png">
+      <ul>
+        <li>asdfsadf</li>
+          <p>asdsaf</p>
+        <li>asdfsadf</li>
+          <p>asdsaf</p>
+        <li>asdfsadf</li>
+          <p>asdsaf</p>
+        <li>asdfsadf</li>
+          <p>asdsaf</p>
+        <li>asdfsadf</li>
+          <p>asdsaf</p>
+      </ul>
+  </div>
+</div>
+
+<div class="sideHistoryModal" id="historyModal">
+    <div class="history-content">
+        <span class="close">×</span>
+        <div class="panel panel-default">
+            <!--..................can we put the stored search histroy in the FAQ siidebar???????-->
+            <div class="panel-heading" id="table-heading">
+                Search History
+            </div>
+            <table class="table added-destination">
+                <tr>
+                    <th id='destination-link'>Destination</th>
+                    <th>City</th>
+                    <th>State</th>
+                </tr>
+            </table>
+        </div>
+
     </div>
 </div>
 <script src="assets/javascript/app.js">

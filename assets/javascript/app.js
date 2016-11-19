@@ -190,7 +190,7 @@ $(document).ready(function() {
             loginUserName: loginUserName,
             loginPassword: loginPassword,
         })
-  
+
         $("#username").val("");
         $("#password").val("");
         $("#loginModal").css("display", "none");
@@ -198,8 +198,12 @@ $(document).ready(function() {
         $("#log-in").text(loginUserName);
         $("#sign-up").css("display", "none");
         // prevents page from refreshing when user submits input
+
+     //   if (loginUserName === "") {
+      //      alert("Enter valid user name")
+       // }
         return false;
-    })
+    });
 
     // create on click event handler to take Sign Up username, password and email and store in firebase
     $("#signUpButton").on("click", function() {

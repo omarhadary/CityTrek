@@ -189,6 +189,11 @@ main {
 	height: 40px;
 }
 
+.incorrect-email-alert {
+	color: red;
+	font-size: 150%;
+}
+
 #add-user-input {
 	width: 90% !important;
 }

@@ -11,15 +11,15 @@
     <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js">
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" rel="stylesheet">
-
-    <script src='https://api.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.4.0/mapbox.directions.js'></script>
-    <link rel='stylesheet' href='https://api.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.4.0/mapbox.directions.css' type='text/css' />
-
-
     <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'>
     </script>
     <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet'>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.4.0/mapbox.directions.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox.js/plugins/mapbox-directions.js/v0.4.0/mapbox.directions.css' type='text/css' />
 </head>
 <body>
 <div class="navigation-bar white">
@@ -33,8 +33,8 @@
     <div id="history">
         History
     </div>
-     <a href="index.html"><div id="home">
-    Home
+       <a href="index.html"><div id="home">
+        Home
     </div></a>
     <div id="nav-toggle">
         &#9776;
@@ -42,21 +42,32 @@
 </div>
 <header></header>
 <div class="background">
-<img src="assets/images/logo.png" class="logoClass">
-    <main class="placeholder">
-        <div class="row" id="margin">
 
-<div id='map'></div>
-<div id='inputs'></div>
+    <img src="assets/images/logo.png" class="logoClass">
+
+        <div class="search-bar">
+
+            <input autocomplete="on" id="city-input" placeholder="City" type="text">
+            <input autocomplete="on" id="state-input" maxlength="2" placeholder="State Abbreviation" type="text">
+            <button id="add-user-input">Search</button>
+
+        </div>
+
+    <main class="placeholder">
+<div class="map-container">
+    <div id='map'></div>
+    <div id='inputs'></div>
 <div id='errors'></div>
 <div id='directions'>
   <div id='routes'></div>
   <div id='instructions'></div>
 </div>
+</div>
 
-        </div>
-        <div class="row">
-            <div class="col s5 weather-API">
+
+
+
+            <div class="weather-API">
                 <div class="row">
                     <div class="weather-city"></div>
                     <div class="weather-time"></div>
@@ -72,18 +83,24 @@
                         <div class="weather-wind-speed"></div>
                         <div class="weather-wind-direction"></div>
                         <div class="weather-humidity"></div>
+                     </div>
                     </div>
                 </div>
-            </div>
-            <div class="col s7 map-API"></div>
-        </div>
-        <div class="panel panel-default">
 
-
-        </div>
+        <!--<div class="panel panel-default">-->
+            <!--<div class="panel-heading" id="table-heading">-->
+                <!--Search History-->
+            <!--</div>-->
+            <!--<table class="table added-destination">-->
+                <!--<tr>-->
+                    <!--<th id='destination-link'>Destination</th>-->
+                    <!--<th>City</th>-->
+                    <!--<th>State</th>-->
+                <!--</tr>-->
+            <!--</table>-->
+        <!--</div>-->
     </main>
 </div>
-
 <footer class="page-footer grey darken-4">
     <div class="container">
         <div class="row">
@@ -92,26 +109,24 @@
                 <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
             </div>
             <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Follow us!</h5>
-                        <a class="grey-text text-lighten-3" href="#!"><img src="assets/images/fbicon.png" id="icon"></a>
-                        <a class="grey-text text-lighten-3" href="#!"><img src="assets/images/igicon.png" id="icon"></a>
-                        <a class="grey-text text-lighten-3" href="#!"><img src="assets/images/twittericon.png" id="icon"></a>
+                <h5 class="white-text">Follow us!</h5><a class="grey-text text-lighten-3" href="#!"><img id="icon" src="assets/images/fbicon.png"></a> <a class="grey-text text-lighten-3" href="#!"><img id="icon" src="assets/images/igicon.png"></a> <a class="grey-text text-lighten-3" href="#!"><img id="icon" src="assets/images/twittericon.png"></a>
             </div>
-          </div>
-          <div class="footer-copyright">
+        </div>
+        <div class="footer-copyright">
             <div class="container">
-            © 2016 CityTrek
+                © 2016 CityTrek
             </div>
-          </div>
-        </footer>
-
+        </div>
+    </div>
+</footer>
 
 <div class="modal" id="loginModal">
     <div class="modal-content">
-        <span class="close">×</span> <img class="modal-logo" src="assets/images/logo.png"> <input autocomplete="on" id="username" placeholder="Username" type="text"> <input id="password" placeholder="Password" type="text"> <button id="logInButton">Log In</button>
+        <span class="close">×</span><img class="modal-logo" src="assets/images/logo.png"> <input autocomplete="on" id="username" placeholder="Username" type="text"> <input id="password" placeholder="Password" type="text"> <button id="logInButton">Log In</button>
         <p>Don't have an account? Sign up <a href="signup.html" style="text-decoration: underline">here</a>!</p>
     </div>
 </div>
+
 <div class="modal" id="signupModal">
     <div class="signup-content">
         <span class="close">×</span> <img class="modal-logo" src="assets/images/logo.png"> <input autocomplete="on" id="username1" placeholder="Username" type="text"> <input id="password1" placeholder="Password" type="text"> <input autocomplete="on" id="e-mail1" placeholder="E-Mail" type="text"><span class="incorrect-email-alert"></span> <button id="signUpButton">Sign Up</button>
@@ -134,48 +149,37 @@
         <div id="close">
             Close
         </div>
-
     </div>
 </div>
 
- <div id="faqModal" class="sideModal">
-  <div class="faq-content">
-    <span class="close">×</span>
-    <img class="faq-logo" src="assets/images/logo.png">
-      <ul>
-        <li>asdfsadf</li>
-          <p>asdsaf</p>
-        <li>asdfsadf</li>
-          <p>asdsaf</p>
-        <li>asdfsadf</li>
-          <p>asdsaf</p>
-        <li>asdfsadf</li>
-          <p>asdsaf</p>
-        <li>asdfsadf</li>
-          <p>asdsaf</p>
-      </ul>
-  </div>
-</div>
-
-<div class="sideHistoryModal" id="historyModal">
+<div class="historyModal" id="searchHistory">
     <div class="history-content">
         <span class="close">×</span>
         <div class="panel panel-default">
             <!--..................can we put the stored search histroy in the FAQ siidebar???????-->
             <div class="panel-heading" id="table-heading">
-                Search History
+               <h4>Search History</h4>
             </div>
-            <table class="table added-destination">
+            <table class="responsive-table highlight added-destination">
+                <thead>
                 <tr>
                     <th id='destination-link'>Destination</th>
                     <th>City</th>
                     <th>State</th>
                 </tr>
+                </thead>
             </table>
-        </div>
-
+        </div><!--............................................-->
     </div>
 </div>
+
+<!--
+<div class="modal" id="search-modal">
+    <div class="modal-content">
+        <span class="search-close">×</span><input autocomplete="on" id="city-input" placeholder="City" type="text"> <input autocomplete="on" id="state-input" maxlength="2" placeholder="State Abbreviation" type="text"><button id="add-user-input">Search</button>
+    </div>
+</div>
+-->
 <script src="assets/javascript/app.js">
 </script>
 </body>

@@ -1,12 +1,40 @@
+<<<<<<< HEAD
  html, body {
+=======
+/*omar added*/
+.buttons {
+	margin-top: 25%;
+}
+.weather-API {
+/*	border: solid;*/
+	margin: 200px auto 50px !important;
+	position: relative !important;
+	width: 90%;
+	border: 1px solid #aaa;
+	border-radius: 10px;
+}
+
+.weather-city {
+	text-align: center;
+	font-size: 150%;
+}
+.weather-time {
+	text-align: center;
+}
+
+/*............................................*/
+
+html, body {
+>>>>>>> b14c1165f38774c4f2948e62b34910afa42f2fc6
 	margin: 0;
 	padding: 0;
 	height: 100%;
 	font-smoothing: antialiased;
- 	background-image: url('../images/background.jpg');
+	background-image: url('../images/background.jpg');
 }
 
 body {
+<<<<<<< HEAD
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -16,10 +44,21 @@ body {
 main {
     flex: 1 0 auto;
  }
+=======
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+>>>>>>> b14c1165f38774c4f2948e62b34910afa42f2fc6
 .background {
 	width: 80%;
-	height: 100% !important;
-	min-height: 1100px !important;
+	height: 200% !important;
+	min-height: 1300px !important;
 	margin: 0 auto 0;
 	background-color: white;
 }
@@ -33,11 +72,11 @@ main {
 }
 
 .container-space {
-	margin-top:70px;
+	margin-top: 70px;
 }
 
 .destination-space {
-	margin-top:150px;
+	margin-top: 150px;
 	font-size: 20px;
 }
 
@@ -51,7 +90,7 @@ main {
 }
 
 .page-footer {
-	margin-top: -40px !important;
+	margin-top: 0px !important;
 	bottom: 0 !important;
 }
 
@@ -67,12 +106,13 @@ main {
 	margin-bottom: 30px;
 }
 
-#search-bar {
-	border: 1px solid #ccc !important;
+.search-bar {
 	position: static !important;
 	border-radius: 5px;
-	height: 70px;
 	font-size: 20px !important;
+	margin: 80px auto !important;
+	width: 70%;
+	text-align: center;
 }
 
 .navigation-bar {
@@ -84,6 +124,7 @@ main {
 	position: fixed;
 	z-index: 100000;
 }
+
 .logo {
 	width: 144px;
 	height: 30px;
@@ -104,27 +145,25 @@ main {
 }
 
 .nav-logo {
-    height: 40px;
-    margin-top: 5px;
-    background-color:white;
+	height: 40px;
+	margin-top: 5px;
+	background-color: white;
 }
 
 .faq-logo {
-    height: 40px;
-    margin-top: 5px;
-    background-color: white;
-   	margin-left: -30px;
+	height: 40px;
+	margin-top: 5px;
+	background-color: white;
+	margin-left: -30px;
 }
-
 
 .placeholder {
-	margin: -80px auto !important;
+	margin: -140px auto !important;
 	text-align: center;
 	width: 85%;
-
 }
 
-#home, #log-in, #sign-up, #search-button, #faq, #nav-toggle, #history, #results-page {
+#home, #history, #log-in, #sign-up, #search-button, #results-page, #faq, #nav-toggle, #results-page {
 	float: right;
 	line-height: 20px;
 	height: 50px;
@@ -132,11 +171,11 @@ main {
 	padding: 15px;
 	border-left: 1px solid #ccc;
 	text-align: center;
-	-o-transition:.7s;
-  	-ms-transition:.7s;
-  	-moz-transition:.7s;
-  	-webkit-transition:.7s;
- 	 transition:.7s;
+	-o-transition: .7s;
+	-ms-transition: .7s;
+	-moz-transition: .7s;
+	-webkit-transition: .7s;
+	transition: .7s;
 }
 
 #nav-toggle {
@@ -153,89 +192,104 @@ main {
 	height: 40px;
 }
 
-#log-in:hover, #sign-up:hover, #faq:hover, #nav-toggle:hover, #home:hover, #history:hover, #results-page:hover {
+#add-user-input {
+	width: 90% !important;
+}
+
+#home:hover, #history:hover, #log-in:hover, #sign-up:hover, #faq:hover, #nav-toggle:hover, #search-button:hover, #results-page:hover {
 	background-color: #ddd;
 	cursor: pointer;
 }
 
+.destination-stored-API {
+	border: none !important;
+	border-radius: 5px !important;
+	color: white;
+	background-color: orange;
+	padding: 10px;
+}
+
+.destination-stored-API:hover {
+	background-color: #bbb;
+}
+
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 10;
-    left: 0;
-    top: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 100% !important;
-    overflow: visible !important;
-    background-color: rgb(0,0,0)!important;
-    background-color: rgba(0,0,0,0.4)!important;
+	display: none;
+	position: fixed;
+	z-index: 10;
+	left: 0;
+	top: 0 !important;
+	width: 100% !important;
+	height: 100% !important;
+	min-height: 100% !important;
+	overflow: visible !important;
+	background-color: rgb(0, 0, 0)!important;
+	background-color: rgba(0, 0, 0, 0.4)!important;
 }
 
 .modal-content {
-    background-color: #ffffff;
-    margin: 100px auto;
-    width: 25%;
-    height: 70%;
-    text-align:center;
-    min-width: 360px;
+	background-color: #ffffff;
+	margin: 100px auto;
+	width: 25%;
+	height: 70%;
+	text-align: center;
+	min-width: 360px;
 }
 
 .signup-content {
-    background-color: #ffffff;
-    margin: 50px auto;
-    width: 25%;
-    height: 70%;
-    min-height: 500px;
-    text-align:center;
-    min-width: 360px;
-    padding: 30px;
+	background-color: #ffffff;
+	margin: 50px auto;
+	width: 25%;
+	height: 70%;
+	min-height: 500px;
+	text-align: center;
+	min-width: 360px;
+	padding: 30px;
 }
 
-.sideModal, #historyModal{
-    display: none; 
-    position: fixed; 
-    z-index: 10;
-    right: 0;
-    top: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 100% !important;
-    overflow: visible !important;
+.sideModal, .historyModal {
+	display: none;
+	position: fixed;
+	z-index: 10;
+	right: 0;
+	width: 100% !important;
+	height: 100% !important;
+	min-height: 100% !important;
+	overflow: visible !important;
 }
 
 .topModal {
-    display: none; 
-    position: fixed; 
-    z-index: 10;
-    right: 0;
-    top: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 100% !important;
-    overflow: visible !important;
+	display: none;
+	position: fixed;
+	z-index: 10;
+	right: 0;
+	top: 0 !important;
+	width: 100% !important;
+	height: 100% !important;
+	min-height: 100% !important;
+	overflow: visible !important;
 }
 
 .faq-content, .history-content {
-    background-color: #fff;
-    float: right;
-    right: 0;
-    z-index: 1;
-    padding: 10px 40px 40px 40px; 
-    width: 30%;
-    height: 100%;
-    text-align: left;
-    border-left: 1px solid #ccc;
-    overflow: scroll !important;
+	background-color: #fff;
+	float: right;
+	right: 0;
+	z-index: 1;
+	padding: 10px 40px 40px 40px;
+	width: 30%;
+	height: 100%;
+	text-align: left;
+	border-left: 1px solid #ccc;
+	overflow: scroll !important;
 }
 
 .nav-content {
-    background-color: #fff;
-    top: 0;
-    z-index: 1;
-    width: 100%;
-    text-align: center;
-    min-width: 360px;
+	background-color: #fff;
+	top: 0;
+	z-index: 1;
+	width: 100%;
+	text-align: center;
+	min-width: 360px;
 }
 
 #close {
@@ -265,10 +319,11 @@ ul li {
 }
 
 input {
-	border: 1px solid black !important;
+	border: 1px solid #ccc !important;
 	padding-left: 5px !important;
 	width: 90% !important;
 	padding-bottom: 0;
+	border-radius: 10px !important;
 }
 
 a {
@@ -276,30 +331,29 @@ a {
 }
 
 .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	margin: 0;
+	padding: 0;
 }
 
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+.close:hover, .close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
 }
 
-#slideshow { 
-    margin: -60px auto; 
-    position: relative; 
-    width: 95%;
-    text-align: center;
+#slideshow {
+	margin: 0px auto 50px !important;
+	position: relative !important;
+	width: 95%;
+	text-align: center;
 }
 
-#slideshow > div { 
-    position: absolute; 
+#slideshow>div {
+	position: absolute;
 }
 
 #slideImages {
@@ -313,20 +367,34 @@ a {
 }
 
 .toggle {
+<<<<<<< HEAD
 	display:none;
 } 
 
 /*Breaking the Map at the moment*/
 /*@media screen and (max-width: 640px) and (min-width: 0px) {
 #log-in, #sign-up, #faq, #results-page {
+=======
+	display: none;
+}
+
+@media screen and (max-width: 640px) and (min-width: 0px) {
+#log-in, #sign-up, #faq, #results-page, #home, #history {
+>>>>>>> b14c1165f38774c4f2948e62b34910afa42f2fc6
 	display: none;
 }*/
 
 #nav-toggle {
+<<<<<<< HEAD
 		display: inline;
 	}
  /*Modal Content */
 
+=======
+	display: inline;
+}
+	/* Modal Content */
+>>>>>>> b14c1165f38774c4f2948e62b34910afa42f2fc6
 .modal-content {
 	background-color: #fff;
 	margin: 100px auto;
@@ -346,10 +414,10 @@ a {
 	padding-right: 0px;
 	text-align: center;
 	margin-bottom: 80px !important;
-}
+	}
 
 .background {
-	width:100%;
+	width: 100%;
 }
 
 .login-background, .signup-background {
@@ -400,6 +468,64 @@ a {
     height: 50%;
     margin-top: 40%;
     margin-right: 20%;
+}
+
+#errors {
+    z-index: 8;
+    opacity: 0;
+    padding: 10px;
+    border-radius: 0 0 3px 3px;
+    background: rgba(0,0,0,.25);
+    top: 90px;
+    left: 10px;
+}
+
+/*Map Styling*/
+
+
+/************************************************************/
+
+.map-container {
+	position: relative;
+	width: 90%;
+	height: 500px;
+	border: 1px solid black;
+	margin: 0px auto 50px;
+	padding: 0 !important;
+}
+
+#map { 
+	position:absolute; 
+	top:0; 
+	bottom:0;
+	left: 0; 
+	right: 0;
+	width:70%;
+	height: 100%; 
+}
+
+#inputs,
+#errors,
+#directions {
+    position: absolute;
+    float: right;
+    width: 30%;
+    right: 0 !important;
+}
+
+#inputs {
+    z-index: 10;
+    top: 10px;
+    left: 10px;
+}
+
+#directions {
+    z-index: 10;
+    background: rgba(0,0,0,.8);
+    top: 0;
+    right: 0 !important;
+    bottom: 0;
+    overflow: auto;
 }
 
 #errors {

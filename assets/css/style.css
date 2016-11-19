@@ -74,7 +74,7 @@ main {
 }
 
 .header {
-	margin: 70px auto;
+	margin: 70px auto 30px;
 	width: 75%;
 	min-height: 300px;
 	background-color: white;
@@ -97,6 +97,7 @@ main {
 	font-size: 35px;
 	font-weight: bold;
 	margin-bottom: 30px;
+	margin-top: 50px;
 }
 
 .search-bar {
@@ -406,13 +407,13 @@ a {
 }
 
 .header {
-	font-size: 35px;
+	font-size: 25px;
 	padding-right: 0px;
 	text-align: center;
 	margin-bottom: 80px !important;
 	}
 
-.background {
+.index-background {
 	width: 100%;
 }
 
@@ -490,4 +491,15 @@ a {
     background: rgba(0,0,0,.25);
     top: 90px;
     left: 10px;
+}
+
+@media screen and (max-width: 850px) and (min-width: 640px) {
+	.header {
+		font-size: 40px;
+	}
+
+	.text {
+		margin-top:130px;
+	}
+
 }

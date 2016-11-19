@@ -55,8 +55,6 @@ $(document).ready(function() {
     // get Weather API results for pre-selected locations and append to page
     function displayWeather() {
 
-
-
         var weatherDiv = $("<div>");
         var cityName = $(this).data("city");
         var stateName = $(this).data("state");
@@ -431,7 +429,6 @@ $("#history").on("click", function(){
     $("html").css("width", "70%");
     $(".logoClass").css("display", "block");
     $(".background").css("width", "100%");
-    $("#directions").css("left", "40%");
 });
 
 historySpan.onclick = function() {
@@ -439,7 +436,6 @@ historySpan.onclick = function() {
     $(".navigation-bar").fadeIn();
     $("html").css("width", "100%")
     $(".logoClass").css("display", "none");
-    $("#directions").css("left", "65%");
     $(".background").css("width", "80%");
     $("#faqModal").css("display", "none")
 };
@@ -450,7 +446,6 @@ $(window).on("click", function(event) {
     $(".navigation-bar").fadeIn();
     $("html").css("width", "100%")
     $(".logoClass").css("display", "none");
-    $("#directions").css("left", "65%");
     $(".background").css("width", "80%");
     $("#faqModal").css("display", "none")
     }

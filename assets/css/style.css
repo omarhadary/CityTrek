@@ -327,6 +327,16 @@ a {
 	color: black !important;
 }
 
+.questions{
+	font-weight:bold;
+}
+
+.answers {
+	margin-left: 20px;
+	margin-top: -2px;
+	text-align: justify;
+}
+
 .close {
 	color: #aaaaaa;
 	float: right;

@@ -47,6 +47,14 @@ main {
 	background-color: white;
 }
 
+.index-background {
+	width: 80%;
+	height: 200% !important;
+	min-height: 1150px !important;
+	margin: 0 auto 0;
+	background-color: white;
+}
+
 .login-background, .signup-background {
 	width: 80%;
 	height: 100% !important;

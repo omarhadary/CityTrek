@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
     <meta charset="UTF-8">
+    <head>
     <title>CityTrek</title>
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js">
-    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
     </script>
     <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js">
@@ -16,45 +14,59 @@
     <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet'>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 </head>
+
 <body>
 <div class="navigation-bar white">
-    <a href="index.html"><img class="logo" src="assets/images/logo.png"></a>
-    <div id="log-in">
-        Log In
-    </div>
-    <div id="sign-up">
-        Sign Up
-    </div><a href="destinations.html">
-    <div id="results-page">
-        Destinations
-    </div></a>
-    <div id="faq">
-        FAQ
-    </div>
-    <div id="nav-toggle">
-        &#9776;
-    </div>
+      <a href="index.html"><img class="logo" src="assets/images/logo.png"></a>
+      <div id="log-in">Log In</div>
+      <div id="sign-up">Sign Up</div>
+      <a href="destinations.html">
+      <div id="results-page">
+      Destinations
+      </div>
+      </a>
+      <div id="faq">FAQ</div>
+      <div id="nav-toggle">&#9776;</div>
+
 </div>
+
 <header></header>
+
 <div class="background">
-    <div class="header">
-        <span class="experience">Experience.</span> Search a city and experience it like a trekker. <input id="search-bar" placeholder="Search for a city, state" type="text">
-    </div>
-    <main class="placeholder">
-        <div class="text">
-            Explore your <span class="experience">destination</span>
-        </div><span class="experience">.</span>
-        <div id="slideshow">
-            <div><img id="slideImages" src="assets/images/losangeles.jpg"></div>
-            <div><img id="slideImages" src="assets/images/chicago.jpg"></div>
-            <div><img id="slideImages" src="assets/images/dallas.jpg"></div>
-            <div><img id="slideImages" src="assets/images/sanfrancisco.jpg"></div>
-            <div><img id="slideImages" src="assets/images/newyork.jpg"></div>
-            <div><img id="slideImages" src="assets/images/denver.jpg"></div>
-            <div><img id="slideImages" src="assets/images/stlouis.jpg"></div>
-        </div>
-    </main>
+<img src="assets/images/logo.png" class="logoClass">
+<div class="header">
+  <span class="experience">Experience.</span> Search a city and experience it like a trekker.
+  <input id="search-bar" type="text" placeholder="Search for a city, state">
 </div>
+
+<main class="placeholder">
+    <div class="text">Explore your <span class="experience">destination</div>.</span>
+    <div id="slideshow">
+       <div>
+         <img src="assets/images/losangeles.jpg" id="slideImages">
+       </div>
+          <div>
+         <img src="assets/images/chicago.jpg" id="slideImages">
+       </div>
+       <div>
+         <img src="assets/images/dallas.jpg" id="slideImages">
+       </div>
+          <div>
+         <img src="assets/images/sanfrancisco.jpg" id="slideImages">
+       </div>
+       <div>
+         <img src="assets/images/newyork.jpg" id="slideImages">
+       </div>
+          <div>
+         <img src="assets/images/denver.jpg" id="slideImages">
+       </div>
+          <div>
+         <img src="assets/images/stlouis.jpg" id="slideImages">
+       </div>
+    </div>
+</main>
+</div>
+<
 <footer class="page-footer grey darken-4">
     <div class="container">
         <div class="row">
@@ -63,72 +75,74 @@
                 <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
             </div>
             <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Follow us!</h5><a class="grey-text text-lighten-3" href="#!"><img id="icon" src="assets/images/fbicon.png"></a> <a class="grey-text text-lighten-3" href="#!"><img id="icon" src="assets/images/igicon.png"></a> <a class="grey-text text-lighten-3" href="#!"><img id="icon" src="assets/images/twittericon.png"></a>
+                <h5 class="white-text">Follow us!</h5>
+                        <a class="grey-text text-lighten-3" href="#!"><img src="assets/images/fbicon.png" id="icon"></a>
+                        <a class="grey-text text-lighten-3" href="#!"><img src="assets/images/igicon.png" id="icon"></a>
+                        <a class="grey-text text-lighten-3" href="#!"><img src="assets/images/twittericon.png" id="icon"></a>
             </div>
-        </div>
-        <div class="footer-copyright">
+          </div>
+          <div class="footer-copyright">
             <div class="container">
-                © 2016 CityTrek
+            © 2016 CityTrek
             </div>
-        </div>
-    </div>
-</footer>
-<div class="modal" id="loginModal">
-    <div class="modal-content">
-        <span class="close">×</span> <img class="modal-logo" src="assets/images/logo.png"> <input id="username" placeholder="Username" type="text"> <input id="password" placeholder="Password" type="text"> <button id="logInButton">Log In</button>
+          </div>
+        </footer>
+
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close">×</span>
+        <img class="modal-logo" src="assets/images/logo.png">
+        <input id="username" type="text" placeholder="Username">
+        <input id="password" type="text" placeholder="Password">
+        <button id="logInButton">Log In</button>
         <p>Don't have an account? Sign up <a href="signup.html" style="text-decoration: underline">here</a>!</p>
-    </div>
+  </div>
+
 </div>
-<div class="modal" id="signupModal">
-    <div class="signup-content">
-        <span class="close">×</span> <img class="modal-logo" src="assets/images/logo.png"> <input id="username1" placeholder="Username" type="text"> <input id="password1" placeholder="Password" type="text"> <input id="e-mail1" placeholder="E-Mail" type="text"> <span class="incorrect-email-alert"></span> <button id="signUpButton">Sign Up</button>
-        <p>Already have an account? Log-in <a href="login.html" style="text-decoration: underline">here</a>!</p>
-    </div>
+
+ <div id="signupModal" class="modal">
+  <div class="signup-content">
+    <span class="close">×</span>
+    <img class="modal-logo" src="assets/images/logo.png">
+    <input id="username1" type="text" placeholder="Username">
+    <input id="password1" type="text" placeholder="Password">
+    <input id="e-mail1" type="text" placeholder="E-Mail">
+    <button id="signUpButton">Sign Up</button>
+    <p>Already have an account? Log-in <a href="login.html" style="text-decoration: underline">here</a>!</p>
+  </div>
 </div>
-<div class="sideModal" id="faqModal">
-    <div class="faq-content">
-        <span class="close">×</span> <img class="faq-logo" src="assets/images/logo.png">
-        <ul>
-            <li>asdfsadf</li>
-            <li style="list-style: none; display: inline">
-                <p>asdsaf</p>
-            </li>
-            <li>asdfsadf</li>
-            <li style="list-style: none; display: inline">
-                <p>asdsaf</p>
-            </li>
-            <li>asdfsadf</li>
-            <li style="list-style: none; display: inline">
-                <p>asdsaf</p>
-            </li>
-            <li>asdfsadf</li>
-            <li style="list-style: none; display: inline">
-                <p>asdsaf</p>
-            </li>
-            <li>asdfsadf</li>
-            <li style="list-style: none; display: inline">
-                <p>asdsaf</p>
-            </li>
-        </ul>
-    </div>
+
+ <div id="faqModal" class="sideModal">
+  <div class="faq-content">
+    <span class="close">×</span>
+    <h4>FAQ</h4>
+      <ul>
+        <li>asdfsadf</li>
+          <p>asdsaf</p>
+        <li>asdfsadf</li>
+          <p>asdsaf</p>
+        <li>asdfsadf</li>
+          <p>asdsaf</p>
+        <li>asdfsadf</li>
+          <p>asdsaf</p>
+        <li>asdfsadf</li>
+          <p>asdsaf</p>
+      </ul>
+  </div>
+
 </div>
-<div class="topModal" id="navModal">
-    <div class="nav-content">
-        <img class="nav-logo" src="assets/images/logo.png"> <a href="login.html">
-        <div id="toggle">
-            Log in
-        </div></a> <a href="signup.html">
-        <div id="toggle">
-            Sign Up
-        </div></a>
-        <div id="toggle">
-            FAQ
-        </div>
-        <div id="close">
-            Close
-        </div>
-    </div>
+
+ <div id="navModal" class="topModal">
+  <div class="nav-content">
+    <img class="nav-logo" src="assets/images/logo.png">
+    <a href="login.html"><div id="toggle">Log in</div></a>
+    <a href="signup.html"><div id="toggle">Sign Up</div></a>
+    <div id="toggle">FAQ</div>
+    <div id="close">Close</div>
+
+  </div>
 </div>
+
 <script src="assets/javascript/app.js">
 </script>
 </body>

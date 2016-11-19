@@ -58,7 +58,7 @@ $(document).ready(function() {
         var weatherDiv = $("<div>");
         var cityName = $(this).data("city");
         var stateName = $(this).data("state");
-        var queryURL = "http://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + stateName + "/" + cityName + ".json";
+        var queryURL = "https://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + stateName + "/" + cityName + ".json";
         $(document).ready(function($) {
             $.ajax({
                 url: queryURL,
@@ -93,17 +93,17 @@ $(document).ready(function() {
 
         cityName = $(this).data("city");
         stateName = $(this).data("state");
-        alert("cityName: " + cityName + "stateName: " + stateName);
+        // alert("cityName: " + cityName + "stateName: " + stateName);
         localStorage.setItem("localStorageCityName", cityName);
         localStorage.setItem("localStorageStateName", stateName);
         // var weatherDiv = $("<div>");
         var localStorageCityName = localStorage.getItem("localStorageCityName");
         // alert(localStorageCityName);
         var localStorageStateName = localStorage.getItem("localStorageStateName");
-        var queryURL = "http://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + localStorageStateName + "/" + localStorageCityName + ".json";
-        alert(queryURL);
+        var queryURL = "https://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + localStorageStateName + "/" + localStorageCityName + ".json";
+        // alert(queryURL);
         $(document).ready(function($) {
-            alert("almost works");
+            // alert("almost works");
             $.ajax({
                 url: queryURL,
                 dataType: "jsonp",
@@ -133,18 +133,18 @@ $(document).ready(function() {
                     $(".weather-humidity").html("Humidity: " + humidity);
                     // weatherDiv.append("...Forecast: " + forecast + "...");
                     // $(".cities").prepend(weatherDiv);
-                    alert("works");
+                    // alert("works");
                 },
-                error: function(error) {
-                    alert('error; ' + eval(error));
-                }
+                // error: function(error) {
+                //     alert('error; ' + eval(error));
+                // }
             });
         });
     }
     // get Weather API results for new locations and append to page
     function displayNewWeather() {
         // var newWeatherDiv = $("<div>");
-        var queryURL = "http://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + newState + "/" + newCity + ".json";
+        var queryURL = "https://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + newState + "/" + newCity + ".json";
         $(document).ready(function($) {
             $.ajax({
                 url: queryURL,
@@ -175,9 +175,9 @@ $(document).ready(function() {
                     // weatherDiv.append("...Forecast: " + forecast + "...");
                     // $(".cities").prepend(newWeatherDiv);
                 },
-                error: function(error) {
-                    alert('error; ' + eval(error));
-                }
+                // error: function(error) {
+                //     alert('error; ' + eval(error));
+                // }
             });
         });
     }
@@ -221,7 +221,7 @@ $(document).ready(function() {
         // var newWeatherDiv = $("<div>");
         cityName = $(this).data("city");
         stateName = $(this).data("state");
-        var queryURL = "http://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + stateName + "/" + cityName + ".json";
+        var queryURL = "https://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + stateName + "/" + cityName + ".json";
         // console.log(queryURL);
         $(document).ready(function($) {
             $.ajax({
@@ -250,9 +250,9 @@ $(document).ready(function() {
                     $(".weather-humidity").html("Humidity: " + humidity);
 
                 },
-                error: function(error) {
-                    alert('error; ' + eval(error));
-                }
+                // error: function(error) {
+                //     alert('error; ' + eval(error));
+                // }
             });
         });
     }
@@ -307,6 +307,52 @@ window.onclick = function(event) {
     //stuff
 // }
 
+
+//Login/Sign Up
+//--------------------------------------------------------------------------------//
+
+ // create on click event handler to take login username and password and store in firebase
+    $("#logInButton").on("click", function() {
+        var loginUserName = $("#username").val().trim();
+        var loginPassword = $("#password").val().trim();
+        database.ref("login").push({
+            loginUserName: loginUserName,
+            loginPassword: loginPassword,
+        })
+        $("#username").val("");
+        $("#password").val("");
+        // prevents page from refreshing when user submits input
+        return false;
+    })
+
+    // create on click event handler to take Sign Up username, password and email and store in firebase
+    $("#signUpButton").on("click", function() {
+        var signUpUserName = $("#username1").val().trim();
+
+        var signUpPassword = $("#password1").val().trim();
+
+        var signUpEmail = $("#e-mail1").val().trim();
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+        if(signUpEmail.match(mailformat)) {
+            // alert("right email format");
+            database.ref("Sign Up").push({
+                signUpUserName: signUpUserName,
+                signUpPassword: signUpPassword,
+                signUpEmail: signUpEmail,
+            })
+
+            $("#username1").val("");
+            $("#password1").val("");
+            $("#e-mail1").val("");
+            $(".incorrect-email-alert").html("");
+            // prevents page from refreshing when user submits input
+            return false;
+        } else {
+            $(".incorrect-email-alert").html("Enter a valid email.");
+            // alert("wrong email format");
+        }
+    })
 
 // Justin's functionality code //
 
@@ -461,7 +507,6 @@ setInterval(function() {
     .end()
     .appendTo('#slideshow');
 },  2500);
-
 
 // ----------------------------------------//
 

@@ -336,35 +336,38 @@ a {
 
 
 /************************************************************/
-
 #map {
 	position: absolute;
-	top: 20%;
+	top: 0;
 	bottom: 0;
-	width: 50%;
-	margin-left: 10%;
+	width: 100%;
 }
-#inputs, #errors, #directions {
-	position: absolute;
-	width: 33.3333%;
-	max-width: 300px;
-	min-width: 200px;
-}
-#inputs {
-	z-index: 10;
-	top: 30%;
-	left: 10px;
-}
+#inputs,
+#errors,
 #directions {
-	z-index: 99;
-	background: rgba(0, 0, 0, .8);
-	top: 20%;
-	right: 0;
-	bottom: 0;
-	overflow: auto;
+    position: absolute;
+    width: 33.3333%;
+    max-width: 300px;
+    min-width: 200px;
+}
+
+#inputs {
+    z-index: 10;
+    top: 10px;
+    left: 10px;
+}
+
+#directions {
+    z-index: 99;
+    background: rgba(0,0,0,.8);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
 }
 
 #errors {
+<<<<<<< HEAD
 	z-index: 8;
 	opacity: 0;
 	padding: 10px;
@@ -374,3 +377,13 @@ a {
 	left: 10px;
 }
 
+=======
+    z-index: 8;
+    opacity: 0;
+    padding: 10px;
+    border-radius: 0 0 3px 3px;
+    background: rgba(0,0,0,.25);
+    top: 90px;
+    left: 10px;
+}
+>>>>>>> 5066bc40ca9e2399be6251ce8645835ff5f9e9c2

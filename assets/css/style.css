@@ -1,4 +1,4 @@
-html, body {
+ html, body {
 	margin: 0;
 	padding: 0;
 	height: 100%;
@@ -6,17 +6,16 @@ html, body {
  	background-image: url('../images/background.jpg');
 }
 
- body {
+body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
 
  }
 
- main {
+main {
     flex: 1 0 auto;
  }
-
 .background {
 	width: 80%;
 	height: 100% !important;
@@ -24,7 +23,6 @@ html, body {
 	margin: 0 auto 0;
 	background-color: white;
 }
-
 .login-background, .signup-background {
 	width: 80%;
 	height: 100% !important;
@@ -139,10 +137,6 @@ html, body {
   	-moz-transition:.7s;
   	-webkit-transition:.7s;
  	 transition:.7s;
-}
-
-#nav-toggle {
-	display: none;
 }
 
 #nav-toggle {
@@ -320,17 +314,18 @@ a {
 
 .toggle {
 	display:none;
-}
+} 
 
-@media screen and (max-width: 640px) and (min-width: 0px) {
+/*Breaking the Map at the moment*/
+/*@media screen and (max-width: 640px) and (min-width: 0px) {
 #log-in, #sign-up, #faq, #results-page {
 	display: none;
-}
+}*/
 
 #nav-toggle {
 		display: inline;
 	}
-/* Modal Content */
+ /*Modal Content */
 
 .modal-content {
 	background-color: #fff;
@@ -369,14 +364,17 @@ a {
 	display: inline;
 }
 
-<<<<<<< HEAD
+/*Map Styling
 /************************************************************/
-#map {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	width: 100%;
-}
+ #map { 
+ 	position:absolute; 
+ 	top:30%; 
+ 	bottom:0; 
+ 	width: 50%;
+ 	height: 50%;
+ 	/*margin-top: 40%;*/
+ }
+
 #inputs,
 #errors,
 #directions {
@@ -388,7 +386,7 @@ a {
 
 #inputs {
     z-index: 10;
-    top: 10px;
+    margin-top: 15%;
     left: 10px;
 }
 
@@ -399,6 +397,9 @@ a {
     right: 0;
     bottom: 0;
     overflow: auto;
+    height: 50%;
+    margin-top: 40%;
+    margin-right: 20%;
 }
 
 #errors {
@@ -410,10 +411,3 @@ a {
     top: 90px;
     left: 10px;
 }
-=======
-.navigation-bar {
-	min-width: 320px;
-}
-
-}
->>>>>>> 7ce0941c7249596a02b48eefb79db700b6677402

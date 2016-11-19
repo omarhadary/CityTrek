@@ -325,7 +325,6 @@ historySpan.onclick = function() {
 
 
 // ----------------------------------------//
-
 L.mapbox.accessToken = 'pk.eyJ1Ijoic2xpY2t0b25lIiwiYSI6ImNpdmxub2c5ZTA1N2MyenF0OWZweXo2Y3MifQ.-NOxV9teamyijL1FWXSMmA';
 
 var map = L.mapbox.map('map', 'mapbox.streets', {

@@ -190,8 +190,13 @@ $(document).ready(function() {
             loginUserName: loginUserName,
             loginPassword: loginPassword,
         })
+  
         $("#username").val("");
         $("#password").val("");
+        $("#loginModal").css("display", "none");
+        $(".navigation-bar").fadeIn();
+        $("#log-in").text(loginUserName);
+        $("#sign-up").css("display", "none");
         // prevents page from refreshing when user submits input
         return false;
     })
@@ -217,6 +222,9 @@ $(document).ready(function() {
             $("#password1").val("");
             $("#e-mail1").val("");
             $(".incorrect-email-alert").html("");
+            $("#signupModal").css("display", "none")
+            $(".navigation-bar").fadeIn();
+
             // prevents page from refreshing when user submits input
             return false;
         } else {
@@ -338,7 +346,6 @@ $("#close").on("click", function() {
 
 
 var historyModal = document.getElementById('searchHistory');
-
 var historySpan = document.getElementsByClassName("close")[2];
 
 $("#history").on("click", function(){

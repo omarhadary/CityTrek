@@ -221,7 +221,7 @@ $(document).ready(function() {
         // var newWeatherDiv = $("<div>");
         cityName = $(this).data("city");
         stateName = $(this).data("state");
-        var queryURL = "http://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + stateName + "/" + cityName + ".json";
+        var queryURL = "https://api.wunderground.com/api/5c889a067ba72299/geolookup/conditions/q/" + stateName + "/" + cityName + ".json";
         // console.log(queryURL);
         $(document).ready(function($) {
             $.ajax({

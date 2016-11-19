@@ -377,6 +377,11 @@ a {
 	display: none;
 }
 
+.incorrect-email-alert {
+	color: red;
+	font-size: 150%;
+}
+
 @media screen and (max-width: 640px) and (min-width: 0px) {
 #log-in, #sign-up, #faq, #results-page, #home, #history {
 	display: none;
